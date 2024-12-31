@@ -1,0 +1,494 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=BioRhyme:wdth,wght@100..125,200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+    :root{
+        --primary: #2ecc70;
+        --secondary: #6d3483;
+        --accent: #8d43ad;
+        --white: #F5F5F5;
+        --black: #1c1c1c;
+        --red: #D04B4B;
+        --box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+        color-scheme: light dark;
+    }
+    * {
+        margin: 0;
+        padding: 0;
+        font-family: "BioRhyme", serif;
+    }
+
+    ::-webkit-scrollbar {
+        width: 12px; /* Width of the vertical scrollbar */
+        height: 12px; /* Height of the horizontal scrollbar */
+    }
+    
+    /* Track (background of the scrollbar) */
+    ::-webkit-scrollbar-track {
+        background: #f4f4f4; /* Light gray background */
+        border-radius: 6px; /* Optional: Rounded corners */
+    }
+    
+    /* Thumb (scroll indicator) */
+    ::-webkit-scrollbar-thumb {
+        background: #888; /* Gray scroll handle */
+        border-radius: 6px; /* Optional: Rounded corners */
+        border: 3px solid #f4f4f4; /* Space around thumb */
+    }
+    
+    /* Hover effect on the scrollbar thumb */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555; /* Darker gray on hover */
+    }
+    
+    /* Optional: Scrollbar corner (where horizontal and vertical scrollbars meet) */
+    ::-webkit-scrollbar-corner {
+        background: #f4f4f4;
+    }
+
+    body{
+        color: light-dark( #efefec, #333b3c);
+        background-color: light-dark(#1c1c1c, #efefec);
+        cursor: none;
+    }
+
+    p{
+        hyphens: auto;
+        color: var(--red);
+        font-family: 'Montserrat';
+    }
+
+    .section-name{
+        /* border-right: 3px solid --red; */
+        color: var(--white);
+        justify-self: center;
+        margin-top: 100px;
+    }
+
+
+    #loader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: var(--black); /* Loader background */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+    }
+
+    #loader div {
+        width: 40px;
+        height: 40px;
+        border: 5px solid #D04B4B; /* Loader border color */
+        border-top: 5px solid transparent;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    /* Header styles */
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        justify-self: center;
+        z-index: 1000;
+        top: 0;
+        background-color: rgba(0,0,0,.1);
+        backdrop-filter: blur(1px);
+        width: 100%;
+        transition: all 0.4s ease;
+        padding-inline: 9%;
+        padding-top: 1rem;
+        
+    }
+
+    header .logo h1 {
+        font-size: 1.5rem;
+    }
+
+    header .logo p {
+        font-size: 0.9rem;
+        color: var(--white);
+    }
+
+    /* Navigation menu */
+    nav ul {
+        list-style: none;
+        display: flex;
+    
+    }
+
+    nav ul li {
+        margin-left: 1.5rem;
+    }
+
+    nav ul li a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+        color: var(--accent); /* Highlight color on hover */
+    }
+
+    header.scrolled {
+        background-color: #000; /* Change to any color */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds a shadow */
+        padding: 10px;
+        border-top-left-radius: 25px;
+        border-top-right-radius: 25px;
+        border-bottom-left-radius: 25px;
+        border-bottom-right-radius: 25px;
+        width: 80%;
+        padding-inline: 2rem;
+      }
+
+
+    main{
+        background: 
+        url('/images/wallpapersden.com_black-and-white-triangle-pattern_1920x1080.jpg') no-repeat center center fixed, 
+        /* linear-gradient(to top right, #ff9900 30%, #660066 82%); */
+        /* linear-gradient(to right, #ab2c2c, #911e43, #6c214d, #45234a, #231f39, #231f39, #231f39, #231f39, #45234a, #6c214d, #911e43, #ab2c2c) */
+        linear-gradient(0deg, rgba(208,75,75,1) 0%, rgba(208,75,75,1) 25%, rgba(28,28,28,1) 72%);
+        background-blend-mode: darken;
+        background-size: cover;
+        width: 90%;
+        height: 80vh;
+        align-items: center;
+        justify-content: center;
+        justify-self: center;
+        border-radius: 12px;
+        display: flex;
+    }
+
+    #main{
+        animation: autoShow both;
+        animation-timeline: view();
+        animation-range: 100px 500px;
+    }
+
+    @keyframes autoShow{
+        0%{
+            opacity: 0;
+            transform: translateY(200px) scale(0.3);
+        }100%{
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+
+    #about{
+        /* background-image: linear-gradient(135deg, rgba(255,255,255,.1), rgba(0,0,0,.1)); */
+        background-image: linear-gradient(0deg,rgba(208,75,75,.5), rgba(0,0,0,.5));
+        backdrop-filter: blur(10px);
+        /* background-size: 30px; */
+        border-radius: 12px;
+        width: 40%;
+        padding: 1rem 2rem;
+    }
+
+    main img{
+        height: 100%;
+        z-index: 5;
+    }
+
+    /*Projects*/
+
+    #projects {
+        max-height: 100vh;
+    }
+    
+    .section-name{
+        color: var(--white);
+        text-align: center;
+        border-bottom: 4px solid var(--red);
+        padding-bottom: 5px;
+    }
+
+    
+    
+    #projects .carousel-inner {
+        display: flex;
+        flex-direction: row; /* Makes carousel items align in a row */
+        justify-content: space-between; /* Spaces items evenly */
+        width: 100%;
+        overflow: hidden; /* Ensures no horizontal scroll */
+    }
+    
+    #projects article {
+        display: flex;
+        /* justify-content: space-evenly; */
+        align-items: center;
+        height: 100%;
+        gap: 20px;
+        padding: 2rem 4rem;
+        position: relative;
+        flex-direction: row; /* Ensures the content inside the article is vertically stacked */
+    }
+    
+    #projects .info {
+        background-color: #efefec;
+        padding: 1rem 2rem;
+        border-radius: 12px;
+        margin-top: 20px;
+        text-align: center;
+        width: 40%;
+    }
+    
+    #projects .images {
+        position: relative;
+        width: 60%;
+        height: 50vh;
+        display: block;
+        border-radius: 20px;
+        overflow: hidden;
+        /* background-color:  #f0f0f0; */
+        margin-bottom: 20px;
+    }
+    
+    #projects .images img {
+        border-radius: 20px;
+        filter: drop-shadow(10px 10px 10px black);
+        opacity: 0; /* Start with opacity 0 */
+      }
+      
+      /* Positioning for the first image */
+      .proj1 {
+        position: absolute;
+        right: 50px;
+        top: 50%;
+        transform: translateY(30px); /* Start 30px below */
+        width: 55%;
+        height: auto;
+         /* 2-second delay */
+        z-index: 1;
+        animation: slideInUp1 3s forwards;
+        animation-delay: .5s;
+      }
+      
+      /* Positioning for the second image */
+      .proj2 {
+        position: absolute;
+        left: 20%;
+        transform: translateX(-20%) translateY(30px); /* Start 30px below */
+        height: 90%;
+        width: auto;
+        box-shadow: var(--box-shadow);
+        animation: slideInUp 3s forwards;
+        animation-delay: 1s; /* 4-second delay */
+      }
+
+      .vid {
+        position: absolute;
+        top: 50%;
+        transform: translateY(30px); /* Start 30px below */
+        width: 100%;
+        height: auto;
+         /* 2-second delay */
+        z-index: 1;
+        animation: slideInUp1 3s forwards;
+        animation-delay: .5s;
+      }
+      
+      /* Keyframes for the animation */
+      @keyframes slideInUp {
+        0% {
+          opacity: 0;
+          transform: translateY(30px); /* Start 30px below */
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0); /* End in the original position */
+        }
+      }
+
+      @keyframes slideInUp1 {
+        0% {
+          opacity: 0;
+          transform: translateY(30px); /* Start 30px below */
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(-50%); /* End in the original position */
+        }
+      }
+    
+    /* Ensuring that the carousel control buttons are positioned correctly */
+    .carousel-control-prev, 
+    .carousel-control-next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1;
+        background: #1c1c1c;
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+    }
+
+    .carousel-control-prev{
+        left: 10%;
+    }
+
+    .carousel-control-next{
+        right: 10%;
+    }
+
+
+    
+    /* Optional: Style the navigation dots for the carousel */
+    /* .carousel-indicators {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1;
+    } */
+
+
+    /* #skills{
+        height: 40vh;
+    } */
+
+    .carousel-inner{
+        padding-inline: 9%;
+        padding-block: 2rem;
+        justify-content: center;
+        align-items: center;
+    }
+    .carousel-item{
+        box-shadow: inset 0px 0px 25px rgba(0,0,0,1);
+        border-radius: 12px;
+        padding: 10px 20px;
+        justify-self: center;
+        width: 100%;
+    }
+
+    /* #education{
+        height: 60vh;
+    } */
+
+    hr{
+        color: var(--red);
+    }
+    
+    .cursor-light {
+        position: fixed; /* Stay in place relative to the viewport */
+        top: 0;
+        left: 0;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        pointer-events: none; /* Ensure it doesn't block interactions */
+        /* background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 80%); */
+        border: 3px solid var(--red);
+        /* backdrop-filter: contrast(200%); */
+        mix-blend-mode: screen; /* Blend with the background */
+        transition: transform 0.4s ease, background 0.4s ease, backdrop-filter 0.4s ease; /* Separate transitions */
+        transform: translate(-50%, -50%); /* Center the "light" over the cursor */
+        z-index: 2222;
+      }
+
+      .cursor-light.hover-effect {
+        transform: translate(-50%, -50%) scale(2); /* Scale up the cursor light */
+        backdrop-filter: invert(100%);
+        box-shadow: 0px 0px 15px rgba(208,75,75,1);
+      }
+    
+    @media (max-width: 768px) {
+        body {
+          font-size: 14px;
+          font-weight: 500; /* Slightly bolder */
+        }
+        main{
+            height: 50vh;
+        }
+        .section-name{
+            margin-bottom: 0;
+        }
+
+        /* #projects{
+            aspect-ratio: 4/3;
+        } */
+
+        #projects article {
+            display: flex;
+            /* justify-content: space-evenly; */
+            align-items: center;
+            width: 100%;
+            height: auto;
+            padding: 0px 20px;
+            position: relative;
+            flex-direction: column-reverse; /* Ensures the content inside the article is vertically stacked */
+        }
+
+        #projects .info {
+            background-color: #efefec;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            margin-top: 20px;
+            text-align: center;
+            width: auto;
+            height: 80%;
+        }
+        
+        #projects .images {
+            position: relative;
+            width: 100%;
+            display: block;
+            border-radius: 12px;
+            overflow: hidden;
+            /* background-color:  #f0f0f0; */
+            margin-bottom: 20px;
+        }
+        .proj1 {
+            position: absolute;
+            right: 20px;
+            top: 30%;
+            transform: translateY(30px);
+            width: 90%;
+            height: auto;
+            z-index: 1;
+            animation: slideInUp1 3s forwards;
+            animation-delay: .5s;
+          }
+          
+          /* Positioning for the second image */
+          .proj2 {
+            position: absolute;
+            left: 20%;
+            transform: translateX(-20%) translateY(30px); 
+            height: 70%;
+            width: auto;
+            box-shadow: var(--box-shadow);
+            animation: slideInUp 3s forwards;
+            animation-delay: 1s; 
+          }
+    
+          .vid {
+            position: absolute;
+            top: 50%;
+            transform: translateY(30px); /* Start 30px below */
+            width: 100%;
+            height: auto;
+             /* 2-second delay */
+            z-index: 1;
+            animation: slideInUp1 3s forwards;
+            animation-delay: .5s;
+          }
+      }
+    
+    
