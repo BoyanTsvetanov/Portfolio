@@ -10,8 +10,12 @@
 
 </head>
 <body>
-    <div id="loader">
-        <div></div>
+    <div id="intro">
+        <div class="column"></div>
+        <div class="column"></div>
+        <div class="column"></div>
+        <div class="column"></div>
+        <div class="column"></div>
     </div>
 
     <header>
@@ -22,7 +26,7 @@
         <!-- Navigation Menu -->
         <nav>
             <ul>
-                <li><a href="#main" class="nav-li">About</a></li>
+                <li><a href="#" onclick="scrollToPosition()" class="nav-li">About</a></li>
                 <li><a href="#projects" class="nav-li">Projects</a></li>
                 <li><a href="#skills" class="nav-li">Skills</a></li>
                 <li><a href="#contact" class="nav-li">Contact</a></li>
@@ -77,20 +81,25 @@
   
           <!-- Third Slide -->
           <div class="carousel-item">
-              <article>
-                  <div class="images">
-                      <!-- <img src="/images/projects/Screenshot_9.png" alt="img" class="proj1">
-                      <img src="/images/projects/Screenshot_13.png" alt="img" class="proj2"> -->
-                      <video class="vid" controls style="border-radius: 20px;">
-                        <source src="videos/1227.mp4" type="video/mp4">
-                      </video>
-                  </div>
-                  <div class="info">
-                      <h2>Unreal Engine Game</h2>
-                      <p><strong>03/2022 – 05/2022</strong></p>
-                      <p>Developed a demo game in Unreal Engine, that I later used in a competition at Arc Academy.</p>
-                  </div>
-              </article>
+            <article>
+              <div class="images">
+                <video class="vid" id="customVideo" style="border-radius: 20px;">
+                  <source src="videos/1227.mp4" type="video/mp4">
+                </video>
+                <div class="custom-controls">
+                  <button id="playPause" class="control-button">▶️</button>
+                  <input type="range" id="seekBar" class="seek-bar" value="0" min="0" max="100">
+                  <button id="muteUnmute" class="control-button">🔊</button>
+                  <input type="range" id="volumeBar" class="volume-bar" min="0" max="1" step="0.1" value="1">
+                  <span id="currentTime">0:00</span> / <span id="duration">0:00</span>
+                </div>
+              </div>
+              <div class="info">
+                <h2>Unreal Engine Game</h2>
+                <p><strong>03/2022 – 05/2022</strong></p>
+                <p>Developed a demo game in Unreal Engine, that I later used in a competition at Arc Academy.</p>
+              </div>
+            </article>
           </div>
       </div>
   
@@ -229,16 +238,20 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   <script>
-        // Wait for the page to fully load
-        window.addEventListener("load", function () {
-          // Hide the loader
-          const loader = document.getElementById("loader");
-          loader.style.display = "none";
-    
-          // Show the main content
-          const mainContent = document.getElementById("main-content");
-          mainContent.style.display = "block";
-        });
+        document.addEventListener("DOMContentLoaded", () => {
+        const intro = document.getElementById("intro");
+        const mainContent = document.getElementById("main-content");
+
+        // Set timer for the intro animation duration
+        setTimeout(() => {
+            // Hide the intro after the zoom and fade-out animation ends
+            setTimeout(() => {
+                intro.style.display = "none"; // Remove intro from the DOM
+                mainContent.style.display = "block"; // Show the main content
+            }, 1000); // Match the CSS fadeOutZoom animation duration
+        }, 4000); // Length of intro animation (3s grow + 1s fadeOutZoom)
+    });
+
       </script>
 
 <script>
@@ -304,6 +317,76 @@
         });
     });
 });
+
+  </script>
+
+<script>
+    function scrollToPosition() {
+    let scrollAmount;
+
+    // Check the screen width
+    if (window.innerWidth < 780) {
+      scrollAmount = window.innerHeight * 0.4; // 80vh for small screens
+    } else {
+      scrollAmount = window.innerHeight * 0.9; // 110vh for larger screens
+    }
+
+    // Scroll smoothly
+    window.scrollTo({
+      top: scrollAmount,
+      behavior: 'smooth',
+    });
+  }
+  </script>
+  <script>
+    const video = document.getElementById("customVideo");
+    const playPauseButton = document.getElementById("playPause");
+    const seekBar = document.getElementById("seekBar");
+    const muteUnmuteButton = document.getElementById("muteUnmute");
+    const volumeBar = document.getElementById("volumeBar");
+    const currentTimeDisplay = document.getElementById("currentTime");
+    const durationDisplay = document.getElementById("duration");
+
+    // Play/Pause functionality
+    playPauseButton.addEventListener("click", () => {
+    if (video.paused) {
+        video.play();
+        playPauseButton.textContent = "⏸️"; // Change to pause icon
+    } else {
+        video.pause();
+        playPauseButton.textContent = "▶️"; // Change to play icon
+    }
+    });
+
+    // Update the seek bar as the video plays
+    video.addEventListener("timeupdate", () => {
+    seekBar.value = (video.currentTime / video.duration) * 100; // Update seek bar
+    currentTimeDisplay.textContent = formatTime(video.currentTime); // Update time display
+    durationDisplay.textContent = formatTime(video.duration); // Show total duration
+    });
+
+    // Seek functionality
+    seekBar.addEventListener("input", () => {
+    video.currentTime = (seekBar.value / 100) * video.duration;
+    });
+
+    // Mute/Unmute functionality
+    muteUnmuteButton.addEventListener("click", () => {
+    video.muted = !video.muted;
+    muteUnmuteButton.textContent = video.muted ? "🔇" : "🔊"; // Update icon
+    });
+
+    // Volume control
+    volumeBar.addEventListener("input", () => {
+    video.volume = volumeBar.value;
+    });
+
+    // Helper function to format time (e.g., 1:30)
+    function formatTime(seconds) {
+    const minutes = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    return `${minutes}:${secs < 10 ? "0" : ""}${secs}`;
+    }
 
   </script>
 </body>

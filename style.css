@@ -65,32 +65,67 @@
     }
 
 
-    #loader {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: var(--black); /* Loader background */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 9999;
-    }
+    #intro {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--black); /* Intro background */
+      display: flex;
+      align-items: flex-end; /* Align columns to the bottom */
+      justify-content: center; /* Center columns horizontally */
+      z-index: 9999;
+      gap: 10px; /* Space between columns */
+      opacity: 1;
+      animation: fadeOutZoom 3s ease-out 3s forwards; /* Trigger zoom + fade-out */
+  }
+  
+  #intro .column {
+      width: 20vw; /* Width of each column */
+      height: 0%; /* Initial height of each column */
+      background-color: #D04B4B; /* Column color */
+      animation: grow 1.5s ease-in-out infinite;
+  }
+  
+  #intro .column:nth-child(2) {
+      animation-delay: 0.3s;
+  }
+  
+  #intro .column:nth-child(3) {
+      animation-delay: 0.6s;
+  }
+  
+  #intro .column:nth-child(4) {
+      animation-delay: 0.9s;
+  }
+  
+  /* Animation for growing columns */
+  @keyframes grow {
+      0%, 100% {
+          height: 10%;
+      }
+      50% {
+          height: 100%;
+      }
+  }
+  
+  /* Zoom + Fade-out Animation */
+  @keyframes fadeOutZoom {
+      0% {
+          /* opacity: 1; */
+          transform: scale(1); /* Normal size */
+      }
+      50% {
+          /* opacity: 0.5; */
+          transform: scale(1.2); /* Slight zoom */
+      }
+      100% {
+          /* opacity: 0; Fully faded out */
+          transform: scale(1.5); /* Zoomed out completely */
+      }
+  }
 
-    #loader div {
-        width: 40px;
-        height: 40px;
-        border: 5px solid #D04B4B; /* Loader border color */
-        border-top: 5px solid transparent;
-        border-radius: 50%;
-        animation: spin 1s linear infinite;
-    }
-
-    @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-    }
 
     /* Header styles */
     header {
@@ -278,6 +313,7 @@
         text-align: center;
         width: 40%;
         animation: slideInRight 3s forwards;
+        color: #000;
     }
     
     #projects .images {
@@ -335,6 +371,69 @@
         animation-delay: .5s;
       }
 
+      .custom-controls {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: rgba(0, 0, 0, 0.6);
+        padding: 10px;
+        border-radius: 10px;
+        color: white;
+        font-family: Arial, sans-serif;
+        margin-top: 10px;
+        z-index: 2;
+        bottom: 0;
+        width: 100%;
+        opacity: 0;
+        transition: all 1s ease;
+      }
+      .custom-controls:hover{
+        opacity: 1;
+      }
+      
+      .control-button {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 20px;
+        cursor: pointer;
+        outline: none;
+      }
+      
+      .control-button:hover {
+        color: var(--accent);
+        cursor: url('images/hand-pointer.png') 10 10, pointer;
+      }
+      
+      .seek-bar,
+      .volume-bar {
+        width: 30%;
+        -webkit-appearance: none;
+        appearance: none;
+        height: 5px;
+        border-radius: 5px;
+        background: var(--white);
+        outline: none;
+        cursor: url('images/hand-pointer.png') 10 10, pointer;
+      }
+      
+      .seek-bar::-webkit-slider-thumb,
+      .volume-bar::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        height: 15px;
+        width: 15px;
+        background: #ffd700;
+        border-radius: 50%;
+        cursor: url('images/hand-pointer.png') 10 10, pointer;
+      }
+      
+      #currentTime,
+      #duration {
+        font-size: 14px;
+      }
+
       @keyframes slideInRight{
         0% {
           opacity: 0;
@@ -382,7 +481,8 @@
         height: 40px;
         width: 40px;
         border-radius: 50%;
-        cursor: url('images/hand-pointer.png') 10 10, pointer;
+        /* cursor: url('images/hand-pointer.png') 10 10, pointer; */
+        opacity: 0.3;
     }
 
     .carousel-control-prev{
@@ -393,6 +493,11 @@
         right: 10%;
     }
 
+    .carousel-control-prev:hover, 
+    .carousel-control-next:hover{
+      opacity: 1;
+      cursor: url('images/hand-pointer.png') 10 10, pointer;
+    }
 
     
     /* Optional: Style the navigation dots for the carousel */
