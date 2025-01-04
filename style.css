@@ -48,6 +48,7 @@
         color: light-dark( #efefec, #333b3c);
         background-color: light-dark(#1c1c1c, #efefec);
         cursor: none;
+
     }
 
     p{
@@ -60,7 +61,7 @@
         /* border-right: 3px solid --red; */
         color: var(--white);
         justify-self: center;
-        margin-top: 100px;
+        /* margin-top: 100px; */
     }
 
 
@@ -142,6 +143,7 @@
 
     nav ul li a:hover {
         color: var(--accent); /* Highlight color on hover */
+        cursor: url('images/hand-pointer.png') 10 10, pointer;
     }
 
     header.scrolled {
@@ -190,15 +192,44 @@
         }
     }
 
-    #about{
-        /* background-image: linear-gradient(135deg, rgba(255,255,255,.1), rgba(0,0,0,.1)); */
-        background-image: linear-gradient(0deg,rgba(208,75,75,.5), rgba(0,0,0,.5));
+    #about {
+        position: relative; /* For positioning the pseudo-element */
+        background-image: linear-gradient(0deg, rgba(208, 75, 75, 0.5), rgba(0, 0, 0, 0.5));
         backdrop-filter: blur(10px);
-        /* background-size: 30px; */
-        border-radius: 12px;
+        border-radius: 12px; /* Rounded corners */
         width: 40%;
         padding: 1rem 2rem;
-    }
+        overflow: hidden; /* Prevent content from overflowing */
+      }
+      
+      #about::after {
+        opacity: 0;
+        content: '';
+        position: absolute;
+        top: -6px; /* Extend the pseudo-element to cover the border area */
+        left: -6px;
+        width: calc(100% + 12px); /* Expand the width to cover the border */
+        height: calc(100% + 12px); /* Expand the height to cover the border */
+        background-image: conic-gradient(transparent, var(--red)); /* Create a conic gradient */
+        border-radius: 18px; /* Slightly larger than the parent border radius */
+        z-index: -1; /* Make sure it stays behind the content */
+        animation: glower 3s linear infinite; /* Add animation for glowing border */
+      }
+      
+      /* Keyframe for the glowing border animation */
+      @keyframes glower {
+        0% {
+          background-position: 0 0;
+        }
+        50% {
+          background-position: 400% 0;
+        }
+        100% {
+          background-position: 0 0;
+        }
+      }
+      
+    
 
     main img{
         height: 100%;
@@ -246,6 +277,7 @@
         margin-top: 20px;
         text-align: center;
         width: 40%;
+        animation: slideInRight 3s forwards;
     }
     
     #projects .images {
@@ -276,7 +308,7 @@
          /* 2-second delay */
         z-index: 1;
         animation: slideInUp1 3s forwards;
-        animation-delay: .5s;
+        animation-delay: 1s;
       }
       
       /* Positioning for the second image */
@@ -288,7 +320,7 @@
         width: auto;
         box-shadow: var(--box-shadow);
         animation: slideInUp 3s forwards;
-        animation-delay: 1s; /* 4-second delay */
+        animation-delay: 1.5s; /* 4-second delay */
       }
 
       .vid {
@@ -301,6 +333,17 @@
         z-index: 1;
         animation: slideInUp1 3s forwards;
         animation-delay: .5s;
+      }
+
+      @keyframes slideInRight{
+        0% {
+          opacity: 0;
+          transform: translateX(30px); /* Start 30px below */
+        }
+        100% {
+          opacity: 1;
+          transform: translateX(0); /* End in the original position */
+        }
       }
       
       /* Keyframes for the animation */
@@ -325,6 +368,8 @@
           transform: translateY(-50%); /* End in the original position */
         }
       }
+
+      
     
     /* Ensuring that the carousel control buttons are positioned correctly */
     .carousel-control-prev, 
@@ -337,6 +382,7 @@
         height: 40px;
         width: 40px;
         border-radius: 50%;
+        cursor: url('images/hand-pointer.png') 10 10, pointer;
     }
 
     .carousel-control-prev{
@@ -372,7 +418,7 @@
     .carousel-item{
         box-shadow: inset 0px 0px 25px rgba(0,0,0,1);
         border-radius: 12px;
-        padding: 10px 20px;
+        padding: 1rem;
         justify-self: center;
         width: 100%;
         transition: all 1s ease;
@@ -395,9 +441,54 @@
 
     #contact{
         background-color: #000;
-        height: 50vh;
-        margin-top: 0;
+        height: 40vh;
+        padding: 1rem 9%;
+        /* display: flex; */
     }
+
+    #contact .info{
+        /* border: 3px solid #2ecc70; */
+        display: flex;
+        justify-content: space-between;
+        /* align-items: center; */
+        margin-top: 2rem;
+        gap: 20px;
+    }
+
+    .info i {
+        font-size: 50px; /* Size of the icons */
+        color: var(--white); /* Icon color */
+        transition: transform 0.3s ease, color 0.3s ease, background 0.5s ease, border 0.2 ease; /* Add hover effect */
+        /* background-color: var(--red); */
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 80px;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        display: flex;
+        border: 1px solid var(--white);
+        cursor: url('images/hand-pointer.png') 10 10, pointer;
+      }
+      
+      .info a {
+        text-decoration: none;
+        display: inline-block;
+      }
+      
+      .info a:hover i {
+        background-color: var(--red);
+        animation: rotateAndScale 1s forwards;
+      }
+      
+      @keyframes rotateAndScale{
+        to{
+            color: #000;
+            rotate: 360deg;
+            transform: scale(1.1);
+            border: none;
+        }
+      }
 
     
     .cursor-light {
@@ -410,6 +501,7 @@
         pointer-events: none; /* Ensure it doesn't block interactions */
         /* background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 80%); */
         border: 3px solid var(--red);
+        backdrop-filter: invert(100%);
         /* backdrop-filter: contrast(200%); */
         mix-blend-mode: screen; /* Blend with the background */
         transition: transform 0.4s ease, background 0.4s ease, backdrop-filter 0.4s ease; /* Separate transitions */
@@ -430,6 +522,7 @@
         }
         main{
             height: 50vh;
+            margin: auto;
         }
         .section-name{
             margin-bottom: 0;
@@ -439,12 +532,44 @@
             aspect-ratio: 4/3;
         } */
 
+        header .logo h1 {
+            font-size: 1.3rem;
+        }
+    
+        header .logo p {
+            font-size: 0.7rem;
+            color: var(--white);
+        }
+
+        header.scrolled {
+            background-color: #000; /* Change to any color */
+            /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); Adds a shadow */
+            padding: 10px;
+            border-top-left-radius: 25px;
+            border-top-right-radius: 25px;
+            border-bottom-left-radius: 25px;
+            border-bottom-right-radius: 25px;
+            width: 90%;
+            padding-inline: 1rem;
+            font-size: small;
+          }
+
+        #main{
+            animation: none;
+            background-clip:padding-box;
+            background-size: auto 100%;
+        }
+
+        #about{
+            width: 50%;
+        }
+
         #projects article {
             display: flex;
             /* justify-content: space-evenly; */
             align-items: center;
             width: 100%;
-            height: auto;
+            height: 70vh;
             padding: 0px 20px;
             position: relative;
             flex-direction: column-reverse; /* Ensures the content inside the article is vertically stacked */
@@ -452,17 +577,19 @@
 
         #projects .info {
             background-color: #efefec;
-            padding: 1rem 2rem;
+            padding: 10px 1rem;
             border-radius: 12px;
             margin-top: 20px;
             text-align: center;
             width: auto;
-            height: 80%;
+            height: auto;
+            color: #000;
         }
         
         #projects .images {
             position: relative;
             width: 100%;
+            height: 60%;
             display: block;
             border-radius: 12px;
             overflow: hidden;
@@ -472,8 +599,8 @@
         .proj1 {
             position: absolute;
             right: 20px;
-            top: 30%;
-            transform: translateY(30px);
+            top: 40%;
+            transform: translateY(30%);
             width: 90%;
             height: auto;
             z-index: 1;
