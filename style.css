@@ -750,6 +750,7 @@
             align-items: center;
             text-align: center;
             padding: 20px;
+            animation: none;
         }
         
         .background-video {
