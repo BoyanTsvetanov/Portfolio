@@ -37,8 +37,8 @@
     <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.54/build/spline-viewer.js"></script>
 <spline-viewer loading-anim-type="none" url="https://prod.spline.design/pxy8IAoIBJ7oMhfj/scene.splinecode"></spline-viewer>
     
-    <main id="main">
-        <video autoplay muted loop id="background-video">
+    <main id="main" class="main">
+        <video autoplay muted loop id="background-video" class="background-video">
             <source src="/videos/176837-856056463_small.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>
@@ -120,7 +120,7 @@
   </section>
 
   <h1 class="section-name">Skills & Education</h1>
-<section id="skills-education" class="row" style="max-width: 100%; padding-inline: 9%;">
+<section id="skills-education" class="row" style="max-width: 100%; padding-inline: 9%; ">
   <!-- Skills Section -->
   <div class="col-md-6">
       <section id="skills" class="carousel slide" data-bs-ride="false">
@@ -216,22 +216,22 @@
     <!-- <hr style="border-width: 5px;"> -->
 
     
-    <section id="contact" style="border-top: 5px solid #D04B4B;">
+    <section id="contact" style="border-top: 5px solid #D04B4B; margin-top: 10px;">
         <h1 class="section-name">Contact</h1>
         <div class="info" style="display: flex; justify-content: center; flex-wrap: nowrap;">
-          <a href="mailto:b**********@gmail.com" target="_blank">
+          <a href="mailto:boyantsvetanov05@gmail.com" title="E-mail: boyantsvetanov05@gmail.com" target="_blank">
             <i class="fas fa-envelope"></i>
           </a>
-          <a href="tel:088**********" title="088**********">
+          <a href="tel:0887377160" title="Phone: 0887377160">
             <i class="fas fa-phone"></i>
           </a>
-          <a href="#" title="Sofia, Bulgaria" target="_blank">
+          <a href="#" title="Sofia, Bulgaria" target="" aria-disabled="true">
             <i class="fas fa-map-marker-alt"></i>
           </a>
-          <a href="https://linkedin.com/in/**********" target="_blank">
+          <a href="https://www.linkedin.com/in/boyan-tsvetanov-26aa2a32b/" title="LinkedIn" target="_blank">
             <i class="fab fa-linkedin"></i>
           </a>
-          <a href="https://github.com/*********" target="_blank">
+          <a href="https://github.com/BoyanTsvetanov" title="GitHub" target="_blank">
             <i class="fab fa-github"></i>
           </a>
         </div>
@@ -253,7 +253,7 @@
             setTimeout(() => {
                 intro.style.display = "none"; // Remove intro from the DOM
                 mainContent.style.display = "block"; // Show the main content
-            }, 1000); // Match the CSS fadeOutZoom animation duration
+            }, 500); // Match the CSS fadeOutZoom animation duration
         }, 6000); // Length of intro animation (3s grow + 1s fadeOutZoom)
     });
 
@@ -286,7 +286,7 @@
 
         // Target multiple elements by ID
         // List of class names
-        const highlightClasses = ["carousel-item", "section-name", "nav-li"];
+        const highlightClasses = ["carousel-item", "section-name", "nav-li", "main"];
 
         // Loop over the class names
         highlightClasses.forEach((className) => {
