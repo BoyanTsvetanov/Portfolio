@@ -1,6 +1,3 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import Header from './sections/Header'
 import Hero from './sections/Hero'
 import About from './sections/About'
@@ -10,10 +7,8 @@ import Contacts from './sections/Contacts'
 import Intro from './sections/Intro'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
+    <main>
       <Intro/>
       <Header/>
       <Hero/>
@@ -21,7 +16,7 @@ function App() {
       <Projects/>
       <Skills/>
       <Contacts/>
-    </>
+    </main>
   )
 }
 
