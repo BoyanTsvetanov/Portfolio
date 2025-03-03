@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=BioRhyme:wdth,wght@100..125,200..800&family=Oswald:wght@400;600;700&family=Russo+One&family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;600;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme{
+  --font-oswald: "Oswald", sans-serif;
+  --font-biorhyme: "BioRhyme", serif;
+  --font-russo: "Russo One", sans-serif;
+  --font-roboto: "Roboto", sans-serif;
+  --font-montserrat: "Montserrat", sans-serif;
+  --font-bebas: "Bebas Neue", sans-serif;
+  --font-poppins: "Poppins", sans-serif;
+
+    --color-dark: #121212;
+    --color-light: #ffffff;
+    --color-primary-dark: #EAEAEA;
+    --color-primary-light: #222222;
+    --color-secondary: #B0B0B0;
+    --color-accent-red: #FF6F61;
+    --color-accent-dark-red: #B22222;
+}
+
+
+body {
+    @apply bg-light text-primary-light transition-colors duration-300;
+  }
+  
+  /* Dark Mode */
+  .dark body {
+    @apply bg-dark text-primary-dark;
+  }
+
+  @layer utilities {
+    /* .mask-custom {
+      -webkit-mask-image: url('/public/batman.png');
+      mask-image: url('/public/batman.png');
+      -webkit-mask-size: contain;
+      mask-size: contain;
+      -webkit-mask-repeat: no-repeat;
+      mask-repeat: no-repeat;
+      -webkit-mask-position: center;
+      mask-position: center;
+    }
+      */
+
+    .clip-path {
+      clip-path: polygon(0 0, 75% 0, 100% 100%, 25% 100%);
+    }
+
+    .scroll-hide::-webkit-scrollbar {
+      display: none;
+    }
+    .scroll-hide {
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none; /* Firefox */
+    }
+    .vertical-rl {
+      -ms-writing-mode:bt-lr;
+      writing-mode: bt-lr;
+    }
+  }
