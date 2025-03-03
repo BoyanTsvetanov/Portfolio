@@ -77,7 +77,7 @@ export const skillsData = [
       "Java",
       "Spring Framework",
       "MySQL",
-      "Spline"
+      "Git"
     ],
     video:"./videos/tech-skills.mp4"
   },
