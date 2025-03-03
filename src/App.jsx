@@ -7,12 +7,14 @@ import About from './sections/About'
 import Projects from './sections/Projects'
 import Skills from './sections/Skills'
 import Contacts from './sections/Contacts'
+import Intro from './sections/Intro'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
+      <Intro/>
       <Header/>
       <Hero/>
       <About/>
