@@ -6,7 +6,7 @@ import Skills from './sections/Skills'
 import Contacts from './sections/Contacts'
 import Intro from './sections/Intro'
 
-function App() {
+const App = () => {
   return (
     <main>
       <Intro/>
