@@ -16,10 +16,18 @@ export const navLinks = [
 
 export const projectsData = [
   {
+    title: "Mavi 15",
+    date: "04/2025",
+    description: "Designed and developed the official website for Mavi 15, a tour travel company. The site is currently live and maintained. Built using React.js, Vite, Tailwind CSS, and Node.js for a fast, modern, and scalable web experience.",
+    images: ["/projects/mavi-lg.png", "/projects/mavi-sm.png"],
+    type: "images",
+    link: "https://mavi-15.com/"
+  },
+  {
     title: "Sneakers Website",
     subtitle: "Urban Maratonki",
-    date: "02/2025 – Present",
-    description: "I'm developing a commercial sneakers' website. Currently focusing on building the front-end with React JS, Tailwind CSS and Vite.",
+    date: "02/2025 – 03/2025",
+    description: "Developed a demo commercial-style sneakers website using React, Vite, and Tailwind CSS.",
     images: ["/projects/sneakers-lg.png", "/projects/sneakers-sm.png"],
     type: "images",
     link: "https://boyantsvetanov.github.io/Sneakers-Demo-App/"

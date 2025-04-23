@@ -94,7 +94,7 @@ const Header = () => {
             </div>
            
             <button className='hidden max-lg:block z-10' onClick={() => setIsOpen((prevState) => !prevState)}>
-                <img src={`./icons/${isOpen ? 'close' : 'hamburger'}.svg`} alt="menu" className={clsx('p-1 dark:invert', hasScrolled && 'not-dark:bg-light')} />
+                <img src={`./icons/${isOpen ? 'close' : 'hamburger'}.svg`} alt="menu" className={clsx('p-1 dark:invert w-10 h-10', hasScrolled && 'not-dark:bg-light')} />
             </button>
             
             </nav>
