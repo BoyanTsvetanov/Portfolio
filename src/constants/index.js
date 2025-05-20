@@ -18,7 +18,7 @@ export const projectsData = [
   {
     title: "Mavi 15",
     date: "04/2025",
-    description: "Designed and developed the official website for Mavi 15, a tour travel company. The site is currently live and maintained. Built using React.js, Vite, Tailwind CSS, and Node.js for a fast, modern, and scalable web experience.",
+    description: "Designed and developed the official website for Mavi 15, a travel and tour company. Built with React.js, Vite, Tailwind CSS, and Node.js, the site delivers a fast, scalable, and modern user experience. Currently live and maintained.",
     images: ["/projects/mavi-lg.png", "/projects/mavi-sm.png"],
     type: "images",
     link: "https://mavi-15.com/"
@@ -27,7 +27,7 @@ export const projectsData = [
     title: "Sneakers Website",
     subtitle: "Urban Maratonki",
     date: "02/2025 – 03/2025",
-    description: "Developed a demo commercial-style sneakers website using React, Vite, and Tailwind CSS.",
+    description: "Built a responsive demo e-commerce site for sneakers with React, Vite, and Tailwind CSS. Focused on clean UI design and shopping experience simulation.",
     images: ["/projects/sneakers-lg.png", "/projects/sneakers-sm.png"],
     type: "images",
     link: "https://boyantsvetanov.github.io/Sneakers-Demo-App/"
@@ -36,7 +36,7 @@ export const projectsData = [
     title: "Xora",
     subtitle: null,
     date: "01/2025 – 01/2025",
-    description: "My first React application, which was also the first time I worked with Tailwind CSS and Vite.",
+    description: "My first React project, exploring component-based design with Tailwind CSS, Vite, and Node.js. Served as a foundational experience in building modern single-page applications.",
     images: [
       "/projects/xora-lg.png",
       "/projects/xora-sm.png"
@@ -48,9 +48,8 @@ export const projectsData = [
     title: "Fitness Website",
     subtitle: "FitLife",
     date: "06/2024 – 09/2024",
-    description: "I developed a demo version of a fitness website using the technologies I knew as well as new ones, including AI image generation, focusing on user-friendly UI.",
+    description: "Developed a fitness-themed demo site with a focus on engaging UI and modern aesthetics. Leveraged AI-generated imagery and integrated both familiar and new technologies.",
     images: [
-      
       "/projects/fitness-lg.png",
       "/projects/fitness-sm.png"
     ],
@@ -61,7 +60,7 @@ export const projectsData = [
     title: "Movie Website",
     subtitle: "Flix",
     date: "10/2023 – 05/2024",
-    description: "I created my own movie website using everything I had learned about web development with Java, MySQL, Spring Framework, HTML, CSS, and JavaScript. I created the basis for a month and kept upgrading its functionality and UI for several other months.",
+    description: "Created a dynamic movie web application using Java, Spring Framework, MySQL, HTML, CSS, and JavaScript. Initially built as a capstone project, then iteratively improved with new features and UI enhancements over several months (Currently not deployed online).",
     images: [
       "/projects/Screenshot_13.png",
       "/projects/Screenshot_9.png"
@@ -70,6 +69,7 @@ export const projectsData = [
     link: "https://github.com/BoyanTsvetanov/The-Graduation-Project"
   }
 ];
+
 
 export const skillsData = [
   {

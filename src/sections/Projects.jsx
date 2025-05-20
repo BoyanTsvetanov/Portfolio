@@ -51,10 +51,10 @@ export default function Projects() {
 
   return (
     <section name="Projects" className="relative w-full mx-auto overflow-hidden max-lg:w-[75%]">
-      <div className="w-1 h-8 bg-dark dark:bg-light justify-self-center"></div>
-      <h1 className="border-t-4 w-min justify-self-center pb-3 px-2 text-[80px] max-sm:text-[60px] font-bold text-center font-poppins">Projects</h1>
-      <div ref={sectionRef} className="relative h-[89dvh] my-6 max-sm:h-[80dvh] w-full mx-auto scroll-hide overflow-hidden max-xl:overflow-x-auto ">
-        <video src="./videos/abstract.mp4" autoPlay loop muted className="absolute w-full h-full object-cover -z-10 max-sm:hidden"></video>
+      <h1 className="hidden max-md:block z-10 justify-self-center px-2 text-[80px] max-sm:text-[60px] font-bold text-center font-poppins">Projects</h1>
+      <div ref={sectionRef} className="relative h-[calc(100dvh-80px)] max-md:h-[50dvh] w-full mx-auto scroll-hide overflow-hidden max-xl:overflow-x-auto ">
+        <h1 className="absolute max-md:hidden top-0 left-34 z-10 justify-self-center px-2 text-[80px] max-sm:text-[60px] font-bold text-center font-poppins">Projects</h1>
+        <video src="./videos/abstract.mp4" autoPlay loop muted className="absolute w-full h-full object-cover -z-10 max-md:hidden"></video>
         <div className='absolute -z-5 w-full h-full bg-gradient-to-br from-transparent to-70% to-black max-sm:hidden'></div>
         <div ref={horizontalRef} className="flex h-[100%] w-full">
           {projectsData.map((project, index) => (

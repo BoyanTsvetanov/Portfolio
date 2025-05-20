@@ -29,7 +29,7 @@ const ProjectItem = ({ title, subtitle, date, description, images, type, link })
           <p className='text-xl max-sm:text-lg font-montserrat'>{date}</p>
         </div>
         <p className='text-xl text-pretty max-md:text-lg max-sm:text-xs mb-6 font-oswald'>{description}</p>
-        <a href={link} target="_blank" rel="noopener noreferrer" className='text-primary-light bg-light hover:scale-105 p-2 rounded-2xl font-bebas max-md:text-sm transition-all duration-500 origin-left'>Check out</a>
+        <a href={link} target="_blank" rel="noopener noreferrer" className='text-primary-light bg-light hover:scale-x-105 p-2 px-4 rounded-2xl font-bebas max-md:text-sm transition-all duration-500 origin-left'>Live Demo</a>
       </div>
 
       <div className='relative w-full h-full flex justify-center items-center'>
