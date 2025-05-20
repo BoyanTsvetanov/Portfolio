@@ -35,7 +35,7 @@ const ProjectItem = ({ title, subtitle, date, description, images, type, link })
       <div className='relative w-full h-full flex justify-center items-center'>
         <img 
           src={`./${type}${isSmall ? images[1] : images[0]}`}  
-          alt="project-bg" 
+          alt="project-image" 
           className='absolute w-fit h-full object-contain max-lg:h-fit rounded-2xl' 
         />
         </div>
