@@ -79,6 +79,7 @@ export const skillsData = [
       "React",
       "Tailwind CSS",
       "Vite",
+      "NodeJS",
       "HTML",
       "CSS",
       "JavaScript",

@@ -37,11 +37,12 @@ const ProjectItem = ({ title, subtitle, date, description, images, type, link })
             alt="project-image" 
             className='h-full object-cover md:rounded group-hover:brightness-50 saturate-75 transition-all duration-300' 
           />
-          {/* <img 
+          <img 
             src={`./${type}${images[0]}`}  
             alt="project-image" 
-            className='absolute w-full h-full object-cover  dark:opacity-100 brightness-200 blur-3xl saturate-150 transition-all duration-300 -z-10' 
-          /> */}
+            className='absolute w-full h-full object-cover opacity-0 dark:opacity-100 brightness-200 blur-3xl saturate-150 transition-all duration-300 -z-10' 
+          />
+          {/* <div className='bg-dark absolute w-full h-full dark:opacity-0 brightness-200 blur-2xl saturate-150 transition-all duration-300 -z-10'></div> */}
           <SquareArrowOutUpRight className='absolute text-light opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 '/>
         </a>
       </div>

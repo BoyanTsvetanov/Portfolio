@@ -72,7 +72,7 @@ const Header = () => {
             <div className='flex flex-row items-center justify-center gap-20'>
             <button
                 onClick={toggleTheme}
-                className="p-2 rounded-lg bg-light dark:bg-dark transition-colors"
+                className="p-2 rounded-lg bg-light dark:bg-dark cursor-pointer transition-colors"
             >
                 {darkMode ? <Sun size={20} /> : <Moon size={20}  className='text-primary-light' />}
             </button>
@@ -94,7 +94,7 @@ const Header = () => {
             </div>
            
             <button className='hidden max-lg:block z-10' onClick={() => setIsOpen((prevState) => !prevState)}>
-                <img src={`./icons/${isOpen ? 'close' : 'hamburger'}.svg`} alt="menu" className={clsx('p-1 dark:invert w-10 h-10', hasScrolled && 'not-dark:bg-light')} />
+                <img src={`./icons/${isOpen ? 'close' : 'hamburger'}.svg`} alt="menu" className={clsx('p-1 dark:invert w-9 h-9', hasScrolled && 'not-dark:bg-light')} />
             </button>
             
             </nav>

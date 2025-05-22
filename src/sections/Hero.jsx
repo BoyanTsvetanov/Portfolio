@@ -16,7 +16,7 @@ const Hero = () => {
       }, []);
 
   return (
-    <section className='w-full h-dvh max-sm:h-[20dvh] max-lg:max-h-[40dvh]'>
+    <section className='w-full h-dvh max-sm:h-[30dvh] max-lg:max-h-[40dvh] max-sm:pt-16'>
         <spline-viewer loading-anim-type="none" url="https://prod.spline.design/pxy8IAoIBJ7oMhfj/scene.splinecode"></spline-viewer>
 
     </section>

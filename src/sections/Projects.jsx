@@ -51,7 +51,11 @@ export default function Projects() {
 
   return (
     <section name="Projects" className="relative w-full mx-auto overflow-hidden max-lg:w-[80%]">
-      <h1 className="z-10 justify-self-center px-2 text-[80px] max-sm:text-[60px] font-bold text-center font-poppins mt-10">Projects</h1>
+      <div className="flex flex-col justify-center items-center mt-10 max-md:mb-4 z-10">
+        <h1 className="font-bold text-center font-poppins">Projects</h1>
+        <h2 className="text-7xl max-md:text-5xl font-bold text-center font-poppins">Standout Work</h2>
+      </div>
+      
       <div ref={sectionRef} className="relative md:h-[calc(100dvh-80px)] max-md:items-stretch w-full mx-auto scroll-hide overflow-hidden max-md:overflow-x-auto ">
         {/* <h1 className="absolute max-lg:hidden top-0 left-1/2 -translate-x-1/2 z-10 text-primary-dark justify-self-center px-2 text-[80px] max-sm:text-[60px] font-bold text-center font-poppins">Projects</h1> */}
         {/* <video src="./videos/test1.mp4" autoPlay loop muted className="absolute w-full h-full object-cover -z-10 max-md:hidden"></video> */}
