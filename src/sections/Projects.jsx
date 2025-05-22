@@ -50,12 +50,13 @@ export default function Projects() {
   }, [isMobile]);
 
   return (
-    <section name="Projects" className="relative w-full mx-auto mt-10 overflow-hidden max-lg:w-[80%]">
-      <h1 className="z-10 justify-self-center px-2 text-[80px] max-sm:text-[60px] font-bold text-center font-poppins my-10">Projects</h1>
-      <div ref={sectionRef} className="relative lg:h-[calc(100dvh-80px)] md:h-[90dvh] max-sm:items-stretch w-full mx-auto scroll-hide overflow-hidden max-md:overflow-x-auto ">
+    <section name="Projects" className="relative w-full mx-auto overflow-hidden max-lg:w-[80%]">
+      <h1 className="z-10 justify-self-center px-2 text-[80px] max-sm:text-[60px] font-bold text-center font-poppins mt-10">Projects</h1>
+      <div ref={sectionRef} className="relative md:h-[calc(100dvh-80px)] max-md:items-stretch w-full mx-auto scroll-hide overflow-hidden max-md:overflow-x-auto ">
         {/* <h1 className="absolute max-lg:hidden top-0 left-1/2 -translate-x-1/2 z-10 text-primary-dark justify-self-center px-2 text-[80px] max-sm:text-[60px] font-bold text-center font-poppins">Projects</h1> */}
-        <video src="./videos/slidebar1.mp4" autoPlay loop muted className="absolute w-full h-full object-cover -z-10 max-md:hidden"></video>
-        <div className='absolute -z-5 w-full h-full bg-gradient-to-br from-transparent from-40% to-90% to-black max-md:hidden'></div>
+        {/* <video src="./videos/test1.mp4" autoPlay loop muted className="absolute w-full h-full object-cover -z-10 max-md:hidden"></video> */}
+        {/* <div className='absolute -z-5 w-full h-full bg-gradient-to-br from-transparent from-40% to-90% to-black max-md:hidden'></div> */}
+        {/* <img src="./images/sticker.png" alt="" className="absolute w-full h-full object-contain -z-10 max-md:hidden" /> */}
         <div ref={horizontalRef} className="flex md:h-full w-full items-stretch">
           {projectsData.map((project, index) => (
             <ProjectItem key={index} title={project.title} subtitle={project.subtitle} date={project.date} description={project.description} images={project.images} type={project.type} link={project.link} >
