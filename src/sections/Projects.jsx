@@ -10,10 +10,10 @@ export default function Projects() {
   const sectionRef = useRef(null);
   const horizontalRef = useRef(null);
 
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 640)
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768)
 
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 640)
+    const handleResize = () => setIsMobile(window.innerWidth < 768)
     window.addEventListener("resize", handleResize)
 
     return () => window.removeEventListener("resize", handleResize)
@@ -50,8 +50,8 @@ export default function Projects() {
   }, [isMobile]);
 
   return (
-    <section name="Projects" className="relative w-full mx-auto overflow-hidden max-lg:w-[80%]">
-      <div className="flex flex-col justify-center items-center mt-10 max-md:mb-4 z-10">
+    <section name="Projects" className="relative w-full mx-auto overflow-hidden px-[6%] bg-gray-300/0">
+      <div className="flex flex-col justify-center items-center mt-10 max-md:mb-6 z-10">
         <h1 className="font-bold text-center font-poppins">Projects</h1>
         <h2 className="text-7xl max-md:text-5xl font-bold text-center font-poppins">Standout Work</h2>
       </div>
@@ -61,7 +61,8 @@ export default function Projects() {
         {/* <video src="./videos/test1.mp4" autoPlay loop muted className="absolute w-full h-full object-cover -z-10 max-md:hidden"></video> */}
         {/* <div className='absolute -z-5 w-full h-full bg-gradient-to-br from-transparent from-40% to-90% to-black max-md:hidden'></div> */}
         {/* <img src="./images/sticker.png" alt="" className="absolute w-full h-full object-contain -z-10 max-md:hidden" /> */}
-        <div ref={horizontalRef} className="flex md:h-full w-full items-stretch">
+        {/* <div className='absolute -z-5 w-full h-full bg-gradient-to-b from-transparent from-40% to-90% to-black/50 max-md:hidden'></div> */}
+        <div ref={horizontalRef} className="flex md:h-full w-full items-stretch max-md:grid max-md:gap-8">
           {projectsData.map((project, index) => (
             <ProjectItem key={index} title={project.title} subtitle={project.subtitle} date={project.date} description={project.description} images={project.images} type={project.type} link={project.link} >
             </ProjectItem>
