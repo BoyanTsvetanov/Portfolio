@@ -24,8 +24,8 @@ export const projectsData = [
     link: "https://mavi-15.com/"
   },
   {
-    title: "Sneakers Website",
-    subtitle: "Urban Maratonki",
+    title: "Urban Maratonki",
+    subtitle: "Sneakers Website",
     date: "02/2025 – 03/2025",
     description: "Built a responsive demo e-commerce site for sneakers with React, Vite, and Tailwind CSS. Focused on clean UI design and shopping experience simulation.",
     images: ["/projects/sneakers-lg.png", "/projects/sneakers-sm.png"],
@@ -45,8 +45,8 @@ export const projectsData = [
     link: "https://boyantsvetanov.github.io/React-First-App-Xora-Demo/"
   },
   {
-    title: "Fitness Website",
-    subtitle: "FitLife",
+    title: "FitLife",
+    subtitle: "Fitness Website",
     date: "06/2024 – 09/2024",
     description: "Developed a fitness-themed demo site with a focus on engaging UI and modern aesthetics. Leveraged AI-generated imagery and integrated both familiar and new technologies.",
     images: [
@@ -57,8 +57,8 @@ export const projectsData = [
     link: "https://boyantsvetanov.github.io/MyGym/index.html"
   },
   {
-    title: "Movie Website",
-    subtitle: "Flix",
+    title: "Flix" ,
+    subtitle: "Movie Website",
     date: "10/2023 – 05/2024",
     description: "Created a dynamic movie web application using Java, Spring Framework, MySQL, HTML, CSS, and JavaScript. Initially built as a capstone project, then iteratively improved with new features and UI enhancements over several months (Currently not deployed online).",
     images: [

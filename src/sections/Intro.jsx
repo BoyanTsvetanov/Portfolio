@@ -53,7 +53,7 @@ export default function Intro() {
           {[...Array(5)].map((_, i) => (
             <motion.div
               key={i}
-              className="w-[20vw] h-full bg-red-600"
+              className="w-[20vw] h-full bg-red-500"
               variants={barVariants}
               style={{ originY: 1 }}
             />

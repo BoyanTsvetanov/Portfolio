@@ -1,8 +1,7 @@
-import React from 'react'
 
 const Contacts = () => {
   return (
-    <footer name="Contact" className='relative mt-10 bg-accent-dark-red flex flex-col justify-center items-center px-[10%]'>
+    <footer name="Contact" className='relative mt-10 bg-red-500 flex flex-col justify-center items-center px-[10%]'>
         <h1 className='text-[52px] font-poppins font-bold'>Contact</h1>
         <div className='flex w-full justify-center gap-6 max-sm:gap-2 flex-nowrap mb-8'>
           <a href="mailto:boyantsvetanov05@gmail.com" title="E-mail" target="_blank"

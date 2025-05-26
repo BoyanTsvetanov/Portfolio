@@ -58,7 +58,7 @@ const Header = () => {
 
     return (
         <header className={clsx('px-16 max-md:px-8 fixed z-50 w-full transition-all duration-500',
-            hasScrolled ? 'py-2 max-md:py-1 text-primary-dark not-dark:bg-dark dark:bg-[#B22222]' : 'lg:py-6 md:py-4 max-md:py-2')}>
+            hasScrolled ? 'py-2 max-md:py-1 text-primary-dark dark:text-primary-light not-dark:bg-dark dark:bg-light' : 'lg:py-6 md:py-4 max-md:py-2')}>
             <nav className='flex justify-between items-center max-md:justify-between'>
             <a href='/' className=''>
                 {/* <img src="./icons/logo-light.png" alt="logo" width={130}/> */}
@@ -72,9 +72,9 @@ const Header = () => {
             <div className='flex flex-row items-center justify-center gap-20'>
             <button
                 onClick={toggleTheme}
-                className="p-2 rounded-lg bg-light dark:bg-dark cursor-pointer transition-colors"
+                className="p-2 rounded-lg bg-light dark:bg-dark text-primary-light dark:text-primary-dark cursor-pointer transition-colors"
             >
-                {darkMode ? <Sun size={20} /> : <Moon size={20}  className='text-primary-light' />}
+                {darkMode ? <Sun size={20} /> : <Moon size={20} />}
             </button>
             
             <ul className={clsx('flex justify-center text-xl items-center gap-16 max-lg:opacity-0 max-lg:absolute max-lg:flex-col max-lg:text-4xl max-lg:w-[100%] max-lg:h-screen max-lg:top-0 max-lg:right-0  max-lg:size-8 ', isOpen ? 'max-lg:opacity-100' : 'max-lg:pointer-events-none')}>
@@ -94,7 +94,7 @@ const Header = () => {
             </div>
            
             <button className='hidden max-lg:block z-10' onClick={() => setIsOpen((prevState) => !prevState)}>
-                <img src={`./icons/${isOpen ? 'close' : 'hamburger'}.svg`} alt="menu" className={clsx('p-1 dark:invert w-9 h-9', hasScrolled && 'not-dark:bg-light')} />
+                <img src={`./icons/${isOpen ? 'close' : 'hamburger'}.svg`} alt="menu" className={clsx('p-1 dark:invert w-9 h-9', hasScrolled ? 'bg-light' : 'not-dark:bg-light')} />
             </button>
             
             </nav>
