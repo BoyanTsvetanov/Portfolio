@@ -35,7 +35,7 @@ export const projectsData = [
   {
     title: "Xora",
     subtitle: null,
-    date: "01/2025 – 01/2025",
+    date: "01/2025",
     description: "My first React project, exploring component-based design with Tailwind CSS, Vite, and Node.js. Served as a foundational experience in building modern single-page applications.",
     images: [
       "/projects/xora-lg.png",

@@ -24,7 +24,7 @@ const ProjectItem = ({ title, subtitle, date, description, images, type, link })
     <div className="relative project w-full shrink-0 flex lg:items-center md:justify-center justify-center px-[10%] text-3xl flex-row md:gap-10 z-10 max-lg:flex-col-reverse">
       
       
-      <div className='lg:w-2/5 w-full h-fit flex flex-col md:items-start items-center justify-center max-md:justify-between max-md:bg-gray-300 max-md:dark:bg-gray-600 max-md:p-2 max-md:rounded-b-xl'>
+      <div className='lg:w-2/5 w-full h-fit flex flex-col md:items-start items-center justify-center max-md:justify-between max-md:bg-gray-300 max-md:dark:bg-[#1b1b1b] max-md:p-2 max-md:rounded-b-xl'>
 
         
         <div className='relative flex flex-col items-start mb-4 max-md:mb-0 w-full'>
@@ -54,7 +54,7 @@ const ProjectItem = ({ title, subtitle, date, description, images, type, link })
                 href={link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className='bg-light not-dark:bg-dark text-primary-light not-dark:text-primary-dark text-nowrap p-2 px-4 font-poppins font-bold text-3xl max-md:text-sm transition-all duration-500'
+                className='bg-light not-dark:bg-dark text-primary-light not-dark:text-primary-dark text-nowrap p-2 px-4 font-poppins font-bold text-3xl max-md:rounded-lg max-md:text-lg max-sm:text-sm transition-all duration-500'
               >
                 Live Demo
               </a>
