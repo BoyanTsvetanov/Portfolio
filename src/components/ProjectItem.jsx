@@ -24,7 +24,7 @@ const ProjectItem = ({ title, subtitle, date, description, images, type, link })
     <div className="relative project w-full shrink-0 flex lg:items-center md:justify-center justify-center px-[10%] text-3xl flex-row md:gap-10 z-10 max-lg:flex-col-reverse">
       
       
-      <div className='lg:w-2/5 w-full h-fit flex flex-col md:items-start items-center justify-center max-md:justify-between max-md:not-dark:bg-gray-300 max-md:p-2 max-md:rounded-b-xl'>
+      <div className='lg:w-2/5 w-full h-fit flex flex-col md:items-start items-center justify-center max-md:justify-between max-md:bg-gray-300 max-md:dark:bg-gray-600 max-md:p-2 max-md:rounded-b-xl'>
 
         
         <div className='relative flex flex-col items-start mb-4 max-md:mb-0 w-full'>

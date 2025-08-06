@@ -1,8 +1,8 @@
 
 const Contacts = () => {
   return (
-    <footer name="Contact" className='relative mt-10 bg-red-500 flex flex-col justify-center items-center px-[10%]'>
-        <h1 className='text-[52px] font-poppins font-bold'>Contact</h1>
+    <footer name="Contact" className='relative mt-10 bg-dark dark:bg-light flex flex-col justify-center items-center px-[10%]'>
+        <h1 className='text-5xl dark:text-primary-light text-primary-dark py-4 font-poppins font-bold'>Contact</h1>
         <div className='flex w-full justify-center gap-6 max-sm:gap-2 flex-nowrap mb-8'>
           <a href="mailto:boyantsvetanov05@gmail.com" title="E-mail" target="_blank"
             className='bg-light rounded-full w-20 h-20 max-md:w-12 max-md:h-12 flex justify-center items-center text-5xl max-sm:text-3xl hover:rotate-360 hover:scale-105 text-accent-dark-red hover:bg-dark transition-all duration-500'>

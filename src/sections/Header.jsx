@@ -31,10 +31,10 @@ const Header = () => {
           spy
           smooth
           activeClass="nav-active"
-          className='font-bebas leading-normal z-10 cursor-pointer group max-lg:text-primary-dark hover:text-primary-dark transition-colors duration-200'
+          className='font-bebas leading-normal z-10 cursor-pointer group max-lg:text-primary-dark  transition-colors duration-200'
         >
           {title}
-          <span class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-primary-dark max-lg:bg-primary-dark"></span>
+          <span class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-primary-dark dark:bg-primary-light max-lg:bg-primary-dark"></span>
         </LinkScroll>
       );
 
@@ -58,7 +58,7 @@ const Header = () => {
 
     return (
         <header className={clsx('px-16 max-md:px-8 fixed z-50 w-full transition-all duration-500',
-            hasScrolled ? 'py-2 max-md:py-1 text-primary-dark dark:text-primary-light not-dark:bg-dark dark:bg-light' : 'lg:py-6 md:py-4 max-md:py-2')}>
+            hasScrolled ? 'py-2 max-md:py-1 text-primary-dark bg-dark/95 backdrop-blur-md' : 'lg:py-6 md:py-4 max-md:py-2')}>
             <nav className='flex justify-between items-center max-md:justify-between'>
             <a href='/' className=''>
                 {/* <img src="./icons/logo-light.png" alt="logo" width={130}/> */}

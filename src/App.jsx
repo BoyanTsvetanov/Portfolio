@@ -9,7 +9,7 @@ import Intro from './sections/Intro'
 const App = () => {
   return (
     <main>
-      <Intro/>
+      {/* <Intro/> */}
       <Header/>
       <Hero/>
       <About/>
