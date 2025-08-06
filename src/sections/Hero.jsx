@@ -1,9 +1,8 @@
-import React,{useEffect} from 'react'
+import {useEffect} from 'react'
 
 const Hero = () => {
 
     useEffect(() => {
-        // Load the Spline Viewer script dynamically if needed
         const script = document.createElement("script");
         script.type = "module";
         script.src = "https://unpkg.com/@splinetool/viewer@1.9.54/build/spline-viewer.js";

@@ -1,65 +1,61 @@
-import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
 
 export default function Intro() {
-  const [show, setShow] = useState(true);
+  const containerRef = useRef(null);
+  const barsRef = useRef([]);
+  const timelineRef = useRef(null);
 
   useEffect(() => {
-    const timer = setTimeout(() => setShow(false), 6000);
-    return () => clearTimeout(timer);
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline();
+
+
+      barsRef.current.forEach((bar, i) => {
+        gsap.to(bar, {
+          scaleY: 1,
+          duration: .75,
+          yoyo: true,
+          repeat: -1,
+          ease: "power1.inOut",
+          delay: i * 0.1,
+          transformOrigin: "bottom",
+        });
+      });
+
+      tl.to(
+        containerRef.current,
+        {
+          opacity: 0,
+          duration: .5,
+          ease: "power2.inOut",
+        },
+        "+=3"
+      );
+      tl.set(containerRef.current, { display: "none" });
+
+      timelineRef.current = tl;
+    }, containerRef);
+
+    return () => {
+      timelineRef.current?.kill();
+      gsap.killTweensOf(barsRef.current);
+    };
   }, []);
 
-  const containerVariants = {
-    initial: {},
-    animate: {
-      transition: {
-        staggerChildren: 0.3,
-      },
-    },
-    exit: {
-      opacity: 0,
-      transition: { duration: 1.5, ease: "easeInOut" },
-    },
-  };
-
-  const barVariants = {
-    initial: { scaleY: 0.5, opacity: 1 },
-    animate: {
-      scaleY: [0.1, 1, 0.1],
-      transition: {
-        duration: 1.5,
-        repeat: Infinity,
-        ease: "easeInOut",
-        repeatType: "loop",
-      },
-    },
-    exit: {
-      scaleY: 0,
-      opacity: 0,
-      transition: { duration: 1.5, ease: "easeInOut" },
-    },
-  };
-
   return (
-    <AnimatePresence>
-      {show && (
-        <motion.div
-          className="fixed top-0 left-0 w-full h-full bg-light dark:bg-dark flex items-end justify-center gap-2 z-[9999]"
-          variants={containerVariants}
-          initial="initial"
-          animate="animate"
-          exit="exit"
-        >
-          {[...Array(5)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="w-[20vw] h-full bg-red-500"
-              variants={barVariants}
-              style={{ originY: 1 }}
-            />
-          ))}
-        </motion.div>
-      )}
-    </AnimatePresence>
+    <div
+      ref={containerRef}
+      className="fixed top-0 left-0 w-full h-full bg-light dark:bg-dark flex items-end justify-center gap-2 z-[9999]"
+    >
+      {[...Array(5)].map((_, i) => (
+        <div
+          key={i}
+          ref={(el) => (barsRef.current[i] = el)}
+          className="w-[100%] h-full bg-red-500"
+          style={{ transformOrigin: "bottom", transform: "scaleY(0.1)" }}
+        />
+      ))}
+    </div>
   );
 }

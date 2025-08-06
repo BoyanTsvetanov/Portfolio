@@ -21,7 +21,7 @@ const About = () => {
           <div className="relative flex flex-col max-lg:justify-stretch max-md:max-h-[50%] min-h-[25%] backdrop-blur-xs rounded-2xl border-2 border-primary-dark text-primary-dark dark:text-primary-light dark:max-md:text-primary-dark dark:max-md:backdrop-brightness-75 max-lg:rounded-b-xl max-lg:rounded-none max-lg:border-0 px-6 py-3 justify-center text-pretty max-md:text-sm max-md:pb-10">
             <h2 className="font-bold font-poppins text-2xl lg:my-2 max-lg:mb-2">About Me</h2>
             <p className="font-montserrat text-pretty">
-              An independent and self-motivated Junior Web Developer looking to apply my knowledge and skills in programming. I love creating beautiful programs with attention to detail.
+              An independent and self-motivated Front-End Developer looking to apply my knowledge and skills in programming. I love creating beautiful programs with attention to detail.
             </p>
           </div>
         </div>

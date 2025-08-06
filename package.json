@@ -13,6 +13,7 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "@gsap/react": "^2.1.2",
     "@tailwindcss/vite": "^4.0.9",
     "clsx": "^2.1.1",
     "framer-motion": "^12.12.1",
