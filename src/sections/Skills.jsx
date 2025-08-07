@@ -11,7 +11,7 @@ const Skills = () => {
         </div>
         {/* <h1 className='text-[220px] max-lg:text-[80px] max-sm:text-[52px] xl:flex-1/5 pointer-events-none font-poppins font-bold w-fit h-fit max-xl:mx-auto xl:[writing-mode:vertical-rl] xl:rotate-180'>Skills</h1> */}
 
-        <div className='flex max-xl:flex-col xl:flex-4/5 xl:w-full justify-end max-xl:items-center gap-8'>
+        <div className='flex max-lg:flex-col xl:flex-4/5 xl:w-full justify-end max-lg:items-center items-stretch gap-8'>
             {skillsData.map((data, index) => (
                 <SkillsItem key={index} category={data.category} description={data.description} skills={data.skills} video={data.video}></SkillsItem>
             ))}

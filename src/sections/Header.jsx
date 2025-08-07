@@ -58,7 +58,7 @@ const Header = () => {
 
     return (
         <header className={clsx('px-16 max-md:px-8 fixed z-50 w-full transition-all duration-500',
-            hasScrolled ? 'py-2 max-md:py-1 text-primary-dark bg-dark/95 backdrop-blur-md' : 'lg:py-6 md:py-4 max-md:py-2')}>
+            hasScrolled ? 'py-2 max-md:py-1 text-primary-dark bg-dark/95 backdrop-blur-md dark:bg-[#1b1b1b]' : 'lg:py-6 md:py-4 max-md:py-2')}>
             <nav className='flex justify-between items-center max-md:justify-between'>
             <a href='/' className=''>
                 {/* <img src="./icons/logo-light.png" alt="logo" width={130}/> */}

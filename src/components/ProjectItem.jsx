@@ -21,12 +21,10 @@ const ProjectItem = ({ title, subtitle, date, description, images, type, link })
   }, []);
 
   return (
-    <div className="relative project w-full shrink-0 flex lg:items-center md:justify-center justify-center px-[10%] text-3xl flex-row md:gap-10 z-10 max-lg:flex-col-reverse">
-      
-      
-      <div className='lg:w-2/5 w-full h-fit flex flex-col md:items-start items-center justify-center max-md:justify-between max-md:bg-gray-300 max-md:dark:bg-[#1b1b1b] max-md:p-2 max-md:rounded-b-xl'>
-
-        
+    <div className="relative project w-full shrink-0 flex lg:items-center justify-center px-[10%] text-3xl flex-row md:gap-10 z-10 max-lg:flex-col-reverse">
+    
+      <div className='lg:w-2/5 w-full h-fit flex flex-col md:items-start items-center justify-center max-md:justify-between max-md:bg-gray-300 max-md:dark:bg-[#1b1b1b] max-md:p-2 max-md:rounded-b-lg'>
+   
         <div className='relative flex flex-col items-start mb-4 max-md:mb-0 w-full'>
           <div className='flex items-center justify-between w-full'>
             <h2 className='text-4xl font-poppins font-bold max-sm:text-2xl'>{title}</h2>
@@ -54,7 +52,7 @@ const ProjectItem = ({ title, subtitle, date, description, images, type, link })
                 href={link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className='bg-light not-dark:bg-dark text-primary-light not-dark:text-primary-dark text-nowrap p-2 px-4 font-poppins font-bold text-3xl max-md:rounded-lg max-md:text-lg max-sm:text-sm transition-all duration-500'
+                className='bg-light not-dark:bg-dark text-primary-light not-dark:text-primary-dark text-nowrap p-2 px-4 font-poppins font-bold text-3xl max-md:rounded max-md:text-lg max-sm:text-sm transition-all duration-500'
               >
                 Live Demo
               </a>
@@ -69,12 +67,12 @@ const ProjectItem = ({ title, subtitle, date, description, images, type, link })
           <img 
             src={`./${type}${images[1]}`}  
             alt="project" 
-            className='h-full object-cover md:rounded max-md:rounded-t-xl group-hover:brightness-50 md:saturate-75 transition-all duration-300' 
+            className='h-full object-cover md:rounded max-md:rounded-t-lg group-hover:brightness-50 md:saturate-75 transition-all duration-300' 
           />
           <img 
             src={`./${type}${images[0]}`}  
             alt="blurred project bg" 
-            className='absolute w-full h-full object-cover opacity-0 dark:opacity-100 md:brightness-200 brightness-150 md:blur-3xl blur-2xl saturate-150 transition-all duration-300 -z-10 max-md:p-[20%]' 
+            className='absolute w-full h-full object-cover opacity-0 dark:opacity-100 md:brightness-200 brightness-150 blur-2xl saturate-150 transition-all duration-300 -z-10 max-md:p-[20%]' 
           />
           <SquareArrowOutUpRight className='absolute text-light opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 ' />
         </a>

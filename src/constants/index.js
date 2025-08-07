@@ -76,29 +76,57 @@ export const skillsData = [
     category: "Technical Skills",
     description: "I have worked with various programming languages and technologies. Some of which are:",
     skills: [
-      "React",
-      "Tailwind CSS",
-      "Vite",
-      "NodeJS",
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "Java",
-      "Spring Framework",
-      "MySQL",
-      "Git"
-    ],
+    { name: "React", img: "./icons/skills/atom.png" },
+    { name: "Tailwind CSS", img: "./icons/skills/tailwind.svg" },
+    { name: "NextJS", img: "./icons/skills/nextjs.svg" },
+    { name: "TypeScript", img: "./icons/skills/typescript.png" },
+    { name: "HTML", img: "./icons/skills/html.png" },
+    { name: "CSS", img: "./icons/skills/css-3.png" },
+    { name: "JavaScript", img: "./icons/skills/java-script.png" },
+    { name: "Java", img: "./icons/skills/java.png" },
+    { name: "Vercel", img: "./icons/skills/vercel.ico" },
+    { name: "Neon", img: "./icons/skills/neon.png" },
+    { name: "MySQL", img: "./icons/skills/mysql.png" },
+    { name: "Git", img: "./icons/skills/github.png" }
+  ],
     video:"./videos/tech-skills.mp4"
   },
   {
     category: "Soft Skills",
     description: null,
     skills: [
-      "Self-reliant",
-      "Resourceful",
-      "Creativity",
-      "Accountability",
-      "Attention to detail"
+          {
+        name: "Self-reliant",
+        img: "https://img.icons8.com/?size=100&id=Ib9FADThtmSf&format=png&color=000000"
+      },
+      {
+        name: "Resourceful",
+        img: "https://img.icons8.com/ios/50/light-on--v1.png"
+      },
+      {
+        name: "Creativity",
+        img: "https://img.icons8.com/?size=100&id=24879&format=png&color=000000"
+      },
+      {
+        name: "Accountability",
+        img: "https://img.icons8.com/ios-filled/50/task.png"
+      },
+      {
+        name: "Attention to detail",
+        img: "https://img.icons8.com/ios-filled/50/search--v1.png"
+      },
+      {
+        name: "Problem-solving",
+        img: "https://img.icons8.com/?size=100&id=AhErnSqOm1fj&format=png&color=000000"
+      },
+        {
+          name: "Time management",
+          img: "https://img.icons8.com/?size=100&id=70301&format=png&color=000000"
+        },
+        {
+          name: "Adaptability",
+          img: "https://img.icons8.com/?size=100&id=11168&format=png&color=000000"
+        }
     ],
     video:"./videos/soft-skills.mp4"
   }
