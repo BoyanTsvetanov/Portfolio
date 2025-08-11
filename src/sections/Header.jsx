@@ -34,7 +34,7 @@ const Header = () => {
           className='font-bebas leading-normal z-10 cursor-pointer group max-lg:text-primary-dark  transition-colors duration-200'
         >
           {title}
-          <span class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-primary-dark dark:bg-primary-light max-lg:bg-primary-dark"></span>
+          <span class={clsx("block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 max-lg:bg-primary-dark", hasScrolled ? "bg-primary-dark" : "bg-primary-light dark:bg-primary-dark")}></span>
         </LinkScroll>
       );
 
@@ -60,13 +60,13 @@ const Header = () => {
         <header className={clsx('px-16 max-md:px-8 fixed z-50 w-full transition-all duration-500',
             hasScrolled ? 'py-2 max-md:py-1 text-primary-dark bg-dark/95 backdrop-blur-md dark:bg-[#1b1b1b]' : 'lg:py-6 md:py-4 max-md:py-2')}>
             <nav className='flex justify-between items-center max-md:justify-between'>
-            <a href='/' className=''>
+            <LinkScroll to='Hero' className='' smooth>
                 {/* <img src="./icons/logo-light.png" alt="logo" width={130}/> */}
                
             <h1 className='font-bebas lg:text-4xl sm:text-2xl max-sm:text-lg'>Boyan Tsvetanov</h1>
             <p className='font-poppins max-md:text-sm'>Web Developer</p>
         
-            </a>
+            </LinkScroll>
             
 
             <div className='flex flex-row items-center justify-center gap-20'>
@@ -94,7 +94,7 @@ const Header = () => {
             </div>
            
             <button className='hidden max-lg:block z-10' onClick={() => setIsOpen((prevState) => !prevState)}>
-                <img src={`./icons/${isOpen ? 'close' : 'hamburger'}.svg`} alt="menu" className={clsx('p-1 dark:invert w-9 h-9', hasScrolled ? 'bg-light' : 'not-dark:bg-light')} />
+                <img src={`./icons/${isOpen ? 'close' : 'hamburger'}.svg`} alt="menu" className={clsx('p-1 dark:invert w-9 h-9', hasScrolled && 'invert')} />
             </button>
             
             </nav>

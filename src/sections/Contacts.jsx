@@ -1,9 +1,9 @@
 
 const Contacts = () => {
   return (
-    <footer name="Contact" className='relative mt-10 flex flex-col justify-center items-center px-[10%]'>
+    <footer name="Contact" className='relative mt-10 flex flex-col justify-center items-center px-[10%] md:mb-8'>
         <div className='font-poppins font-bold text-center py-8'>
-          <h2 className="md:hidden">Contact</h2>
+          {/* <h2 className="md:hidden">Contact</h2> */}
           <p className="md:text-7xl text-5xl">Let's build something remarkable together</p>
         </div>
         
