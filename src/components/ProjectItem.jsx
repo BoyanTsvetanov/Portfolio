@@ -47,7 +47,7 @@ const ProjectItem = ({ title, subtitle, date, description, images, type, link })
                 <p className='text-xl max-md:text-lg max-sm:text-sm font-montserrat'>{subtitle}</p>
               )} */}
               <p className='text-xl max-sm:text-lg font-montserrat text-current/75'>{date}</p>
-              <p className='text-xl text-pretty max-md:text-lg max-sm:text-sm font-montserrat'>{description}</p>
+              <p className='text-xl text-pretty max-md:text-lg max-sm:text-sm font-montserrat leading-normal'>{description}</p>
               <a
                 href={link}
                 target="_blank"

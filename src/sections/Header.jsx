@@ -27,7 +27,7 @@ const Header = () => {
         <LinkScroll
           onClick={() => setIsOpen(false)}
           to={title}
-          offset={-100}
+          offset={-80}
           spy
           smooth
           activeClass="nav-active"
@@ -72,7 +72,7 @@ const Header = () => {
             <div className='flex flex-row items-center justify-center gap-20'>
             <button
                 onClick={toggleTheme}
-                className="p-2 rounded-lg bg-light dark:bg-dark text-primary-light dark:text-primary-dark cursor-pointer transition-colors"
+                className={clsx("p-2 rounded-lg  text-primary-light dark:text-primary-dark cursor-pointer transition-colors", hasScrolled ? 'bg-light dark:bg-dark': 'bg-transparent')}
             >
                 {darkMode ? <Sun size={20} /> : <Moon size={20} />}
             </button>

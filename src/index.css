@@ -24,13 +24,25 @@
 
 
 body {
-    @apply bg-light text-primary-light transition-colors duration-300;
+    @apply bg-light text-primary-light transition-colors duration-300 overflow-x-hidden;
   }
   
   /* Dark Mode */
   .dark body {
     @apply bg-dark text-primary-dark;
   }
+
+  ::-webkit-scrollbar:horizontal {
+  display: none; /* Chrome, Safari */
+}
+
+  /* .nav-active {
+    @apply text-accent-red;
+  }
+
+  .nav-active span {
+    @apply bg-accent-red max-w-full;
+  } */
 
   @layer utilities {
     /* .mask-custom {

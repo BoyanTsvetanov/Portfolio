@@ -50,10 +50,10 @@ export default function Projects() {
   }, [isMobile]);
 
   return (
-    <section name="Projects" ref={sectionRef} className="relative w-full mx-auto overflow-hidden md:mt-16">
-      <div className="flex flex-col justify-center items-center max-md:mb-6 z-10 md:pt-4">
+    <section name="Projects" ref={sectionRef} className="relative w-full mx-auto md:mt-14">
+      <div className="flex flex-col justify-center items-center max-md:mb-6 z-10 md:pt-6">
         <h2 className="font-bold text-center font-poppins">Projects</h2>
-        <p className="text-7xl max-md:text-5xl max-w-[94%] font-bold text-center font-poppins z-10">Standout Work</p>
+        <p className="text-7xl max-md:text-5xl max-w-[94%] tracking-tight font-bold text-center font-poppins z-10">Standout Work</p>
       </div>
       
       <div  className="relative max-md:items-stretch w-full mx-auto scroll-hide transition-colors duration-300">
