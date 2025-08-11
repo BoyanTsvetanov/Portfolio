@@ -32,10 +32,6 @@ body {
     @apply bg-dark text-primary-dark;
   }
 
-  ::-webkit-scrollbar:horizontal {
-  display: none; /* Chrome, Safari */
-}
-
   /* .nav-active {
     @apply text-accent-red;
   }
