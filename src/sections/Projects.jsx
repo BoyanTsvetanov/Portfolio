@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import {projectsData} from "../constants/index.js";
+import { projectsData } from "../constants/index.js";
 import ProjectItem from "../components/ProjectItem.jsx";
+import { getTheme, setTheme } from "../constants/theme.js";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -10,25 +11,65 @@ export default function Projects() {
   const sectionRef = useRef(null);
   const horizontalRef = useRef(null);
 
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768)
+  const previousThemeRef = useRef(null);
+
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 768)
-    window.addEventListener("resize", handleResize)
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener("resize", handleResize);
 
-    return () => window.removeEventListener("resize", handleResize)
-  }, [])
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
-
-    if(isMobile) return
+    if (isMobile) return;
 
     let ctx = gsap.context(() => {
       const sections = gsap.utils.toArray(".project");
-      
+
       // Calculate total width
       const totalWidth = horizontalRef.current.offsetWidth;
-      const sectionHeight = sectionRef.current.offsetHeight;
+      const scrollLength = sections.length * horizontalRef.current.offsetHeight;
+      const scrollEnd = window.innerWidth * (1 + 1 / sections.length);
+
+      ScrollTrigger.create({
+        trigger: sectionRef.current,
+        start: "top center",
+        end: `+=${scrollEnd}`,
+        markers: true,
+        pin: false,
+
+        onEnter: () => {
+          const currentTheme = getTheme();
+          previousThemeRef.current = currentTheme;
+
+          if (currentTheme === "light") {
+            setTheme("dark");
+          }
+        },
+
+        onEnterBack: () => {
+          const currentTheme = getTheme();
+          previousThemeRef.current = currentTheme;
+
+          if (currentTheme === "light") {
+            setTheme("dark");
+          }
+        },
+
+        onLeave: () => {
+          if (previousThemeRef.current === "light") {
+            setTheme("light");
+          }
+        },
+
+        onLeaveBack: () => {
+          if (previousThemeRef.current === "light") {
+            setTheme("light");
+          }
+        },
+      });
 
       // Set up the ScrollTrigger to pin and scroll horizontally
       gsap.to(horizontalRef.current, {
@@ -50,22 +91,39 @@ export default function Projects() {
   }, [isMobile]);
 
   return (
-    <section name="Projects" ref={sectionRef} className="relative w-full mx-auto md:mt-14">
+    <section
+      name="Projects"
+      ref={sectionRef}
+      className="relative w-full mx-auto md:mt-14"
+    >
       <div className="flex flex-col justify-center items-center max-md:mb-6 z-10 md:pt-6">
         <h2 className="font-bold text-center font-poppins">Projects</h2>
-        <p className="text-7xl max-md:text-5xl max-w-[94%] tracking-tight font-bold text-center font-poppins z-10">Standout Work</p>
+        <p className="text-7xl max-md:text-5xl max-w-[94%] tracking-tight font-bold text-center font-poppins z-10">
+          Standout Work
+        </p>
       </div>
-      
-      <div  className="relative max-md:items-stretch w-full mx-auto scroll-hide transition-colors duration-300">
+
+      <div className="relative max-md:items-stretch w-full mx-auto scroll-hide transition-colors duration-300">
         {/* <h1 className="absolute max-lg:hidden top-0 left-1/2 -translate-x-1/2 z-10 text-primary-dark justify-self-center px-2 text-[80px] max-sm:text-[60px] font-bold text-center font-poppins">Projects</h1> */}
         {/* <video src="./videos/test1.mp4" autoPlay loop muted className="absolute w-full h-full object-cover -z-10 max-md:hidden"></video> */}
         {/* <div className='absolute -z-5 w-full h-full bg-gradient-to-br from-transparent from-40% to-90% to-black max-md:hidden'></div> */}
         {/* <img src="./images/sticker.png" alt="" className="absolute w-full h-full object-contain -z-10 max-md:hidden" /> */}
         {/* <div className='absolute -z-5 w-full h-full bg-gradient-to-b from-transparent from-40% to-90% to-black/50 max-md:hidden'></div> */}
-        <div ref={horizontalRef} className="flex lg:h-fit md:py-16 w-full items-stretch max-md:grid max-md:gap-8">
+        <div
+          ref={horizontalRef}
+          className="flex lg:h-fit md:py-16 w-full items-stretch max-md:grid max-md:gap-8"
+        >
           {projectsData.map((project, index) => (
-            <ProjectItem key={index} title={project.title} subtitle={project.subtitle} date={project.date} description={project.description} images={project.images} type={project.type} link={project.link} >
-            </ProjectItem>
+            <ProjectItem
+              key={index}
+              title={project.title}
+              subtitle={project.subtitle}
+              date={project.date}
+              description={project.description}
+              images={project.images}
+              type={project.type}
+              link={project.link}
+            ></ProjectItem>
           ))}
         </div>
       </div>

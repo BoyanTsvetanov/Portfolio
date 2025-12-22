@@ -138,49 +138,6 @@ export const statistics = [
     { value: '250k+', label: 'Customers' },
 ];
 
-
-export const sneaker_categories = [
-    {
-        id: "men",
-        name: "Мъжки маратонки",
-      },
-      {
-        id: "women",
-        name: "Дамски маратонки",
-      },
-      {
-        id: "kids",
-        name: "Детски маратонки",
-      },
-      {
-        id: "running",
-        name: "Маратонки за бягане",
-      },
-      {
-        id: "basketball",
-        name: "Баскетболни обувки",
-      },
-      {
-        id: "skateboarding",
-        name: "Скейтборд обувки",
-      },
-      {
-        id: "limited-edition",
-        name: "Ограничена серия",
-      },
-      {
-        id: "sale",
-        name: "Намаления",
-      },
-      {
-        id: "new-arrivals",
-        name: "Нови модели",
-      },
-      {
-        id: "retro",
-        name: "Ретро класики",
-      },
-  ];
   
 // export const products = [
 //     {
