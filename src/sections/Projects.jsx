@@ -30,7 +30,6 @@ export default function Projects() {
 
       // Calculate total width
       const totalWidth = horizontalRef.current.offsetWidth;
-      const scrollLength = sections.length * horizontalRef.current.offsetHeight;
       const scrollEnd = window.innerWidth * (1 + 1 / sections.length);
 
       ScrollTrigger.create({
@@ -98,9 +97,9 @@ export default function Projects() {
     >
       <div className="flex flex-col justify-center items-center max-md:mb-6 z-10 md:pt-6">
         <h2 className="font-bold text-center font-poppins">Projects</h2>
-        <p className="text-7xl max-md:text-5xl max-w-[94%] tracking-tight font-bold text-center font-poppins z-10">
+        <h3 className="text-7xl max-md:text-5xl max-w-[94%] tracking-tight leading-none! font-bold text-center font-poppins z-10">
           Standout Work
-        </p>
+        </h3>
       </div>
 
       <div className="relative max-md:items-stretch w-full mx-auto scroll-hide transition-colors duration-300">

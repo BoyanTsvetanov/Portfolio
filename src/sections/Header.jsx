@@ -29,17 +29,10 @@ const Header = () => {
       spy
       smooth
       activeClass="nav-active"
-      className="font-bebas leading-normal z-10 cursor-pointer group max-lg:text-primary-dark  transition-colors duration-200"
+      className="font-sofiasans leading-normal z-10 cursor-pointer group max-lg:text-primary-dark  transition-colors duration-200"
     >
       {title}
-      <span
-        class={clsx(
-          "block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 max-lg:bg-primary-dark",
-          hasScrolled
-            ? "bg-primary-dark"
-            : "bg-primary-light dark:bg-primary-dark"
-        )}
-      ></span>
+      <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-white"></span>
     </LinkScroll>
   );
 
@@ -47,9 +40,21 @@ const Header = () => {
 
   // Load theme from localStorage on mount
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme") === "dark";
-    setDarkMode(savedTheme);
-    document.documentElement.classList.toggle("dark", savedTheme);
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+
+    const applyTheme = (e) => {
+      const isDark = e.matches;
+      setDarkMode(isDark);
+      document.documentElement.classList.toggle("dark", isDark);
+    };
+
+    // Initial check
+    applyTheme(mediaQuery);
+
+    // Listen for system theme changes
+    mediaQuery.addEventListener("change", applyTheme);
+
+    return () => mediaQuery.removeEventListener("change", applyTheme);
   }, []);
 
   // Toggle theme and save to localStorage
@@ -62,13 +67,13 @@ const Header = () => {
   return (
     <header
       className={clsx(
-        "px-16 max-md:px-8 fixed z-50 w-full transition-all duration-500",
+        "px-16 max-md:px-8 fixed z-50 w-full mix-blend-difference text-white transition-all duration-500",
         hasScrolled
-          ? "py-2 max-md:py-1 text-primary-dark bg-dark/95 backdrop-blur-md dark:bg-[#1b1b1b]"
+          ? "lg:py-6 md:py-4 max-md:py-2"
           : "lg:py-6 md:py-4 max-md:py-2"
       )}
     >
-      <nav className="flex justify-between items-center max-md:justify-between">
+      <nav className="flex justify-between items-center max-md:justify-between ">
         <LinkScroll to="Hero" className="" smooth>
           {/* <img src="./icons/logo-light.png" alt="logo" width={130}/> */}
 
@@ -91,8 +96,8 @@ const Header = () => {
 
           <ul
             className={clsx(
-              "flex justify-center text-xl items-center gap-16 max-lg:opacity-0 max-lg:absolute max-lg:flex-col max-lg:text-4xl max-lg:w-[100%] max-lg:h-screen max-lg:top-0 max-lg:right-0  max-lg:size-8 ",
-              isOpen ? "max-lg:opacity-100" : "max-lg:pointer-events-none"
+              "flex justify-center text-xl items-center gap-16 absolute max-lg:flex-col max-lg:text-4xl w-[100%] max-lg:h-screen max-lg:top-0 max-lg:right-0  max-lg:size-8 ",
+              isOpen ? "opacity-100" : "pointer-events-none opacity-0"
             )}
           >
             {navLinks.map((item) => (
@@ -114,13 +119,13 @@ const Header = () => {
         </div>
 
         <button
-          className="hidden max-lg:block z-10"
+          className="block z-10"
           onClick={() => setIsOpen((prevState) => !prevState)}
         >
           <img
             src={`./icons/${isOpen ? "close" : "hamburger"}.svg`}
             alt="menu"
-            className={clsx("p-1 dark:invert w-9 h-9", hasScrolled && "invert")}
+            className="p-1 mix-blend-difference invert w-9 h-9 hover:cursor-pointer"
           />
         </button>
       </nav>
