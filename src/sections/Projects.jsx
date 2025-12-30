@@ -36,7 +36,7 @@ export default function Projects() {
         trigger: sectionRef.current,
         start: "top center",
         end: `+=${scrollEnd}`,
-        markers: true,
+        markers: false,
         pin: false,
 
         onEnter: () => {

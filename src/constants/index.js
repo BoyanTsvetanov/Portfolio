@@ -3,142 +3,133 @@
 
 // import shoe from "../assets/products/shoe.png";
 
-
-
-
 export const navLinks = [
-    { href: "#home", label: "About" },
-    { href: "#products", label: "Projects" },
-    { href: "#about-us", label: "Skills" },
-    { href: "#contact-us", label: "Contact" },
+  { href: "#home", label: "About" },
+  { href: "#products", label: "Projects" },
+  { href: "#about-us", label: "Skills" },
+  { href: "#contact-us", label: "Contact" },
 ];
-
 
 export const projectsData = [
   {
     title: "Mavi 15",
     date: "04/2025",
-    description: "Designed and developed the official website for Mavi 15, a travel and tour company. Built with React.js, Vite, Tailwind CSS, and Node.js, the site delivers a fast, scalable, and modern user experience. Currently live and maintained.",
+    description:
+      "Designed and developed the official website for Mavi 15, a travel and tour company. Built with React.js, Vite, Tailwind CSS, and Node.js, the site delivers a fast, scalable, and modern user experience. Currently live and maintained.",
     images: ["/projects/mavi-lg.png", "/projects/mavi-sm.png"],
     type: "images",
-    link: "https://mavi-15.com/"
+    link: "https://mavi-15.com/",
   },
   {
     title: "Urban Maratonki",
     subtitle: "Sneakers Website",
     date: "02/2025 – 03/2025",
-    description: "Built a responsive demo e-commerce site for sneakers with React, Vite, and Tailwind CSS. Focused on clean UI design and shopping experience simulation.",
+    description:
+      "Built a responsive demo e-commerce site for sneakers with React, Vite, and Tailwind CSS. Focused on clean UI design and shopping experience simulation.",
     images: ["/projects/sneakers-lg.png", "/projects/sneakers-sm.png"],
     type: "images",
-    link: "https://boyantsvetanov.github.io/Sneakers-Demo-App/"
+    link: "https://boyantsvetanov.github.io/Sneakers-Demo-App/",
   },
   {
     title: "Xora",
     subtitle: null,
     date: "01/2025",
-    description: "My first React project, exploring component-based design with Tailwind CSS, Vite, and Node.js. Served as a foundational experience in building modern single-page applications.",
-    images: [
-      "/projects/xora-lg.png",
-      "/projects/xora-sm.png"
-    ],
+    description:
+      "My first React project, exploring component-based design with Tailwind CSS, Vite, and Node.js. Served as a foundational experience in building modern single-page applications.",
+    images: ["/projects/xora-lg.png", "/projects/xora-sm.png"],
     type: "images",
-    link: "https://boyantsvetanov.github.io/React-First-App-Xora-Demo/"
+    link: "https://boyantsvetanov.github.io/React-First-App-Xora-Demo/",
   },
   {
     title: "FitLife",
     subtitle: "Fitness Website",
     date: "06/2024 – 09/2024",
-    description: "Developed a fitness-themed demo site with a focus on engaging UI and modern aesthetics. Leveraged AI-generated imagery and integrated both familiar and new technologies.",
-    images: [
-      "/projects/fitness-lg.png",
-      "/projects/fitness-sm.png"
-    ],
+    description:
+      "Developed a fitness-themed demo site with a focus on engaging UI and modern aesthetics. Leveraged AI-generated imagery and integrated both familiar and new technologies.",
+    images: ["/projects/fitness-lg.png", "/projects/fitness.png"],
     type: "images",
-    link: "https://boyantsvetanov.github.io/MyGym/index.html"
+    link: "https://boyantsvetanov.github.io/MyGym/index.html",
   },
   {
-    title: "Flix" ,
+    title: "Flix",
     subtitle: "Movie Website",
     date: "10/2023 – 05/2024",
-    description: "Created a dynamic movie web application using Java, Spring Framework, MySQL, HTML, CSS, and JavaScript. Initially built as a capstone project, then iteratively improved with new features and UI enhancements over several months (Currently not deployed online).",
-    images: [
-      "/projects/Screenshot_13.png",
-      "/projects/Screenshot_9.png"
-    ],
+    description:
+      "Created a dynamic movie web application using Java, Spring Framework, MySQL, HTML, CSS, and JavaScript. Initially built as a capstone project, then iteratively improved with new features and UI enhancements over several months (Currently not deployed online).",
+    images: ["/projects/Screenshot_13.png", "/projects/Screenshot_9.png"],
     type: "images",
-    link: "https://github.com/BoyanTsvetanov/The-Graduation-Project"
-  }
+    link: "https://github.com/BoyanTsvetanov/The-Graduation-Project",
+  },
 ];
-
 
 export const skillsData = [
   {
     category: "Technical Skills",
-    description: "I have worked with various programming languages and technologies. Some of which are:",
+    description:
+      "I have worked with various programming languages and technologies. Some of which are:",
     skills: [
-    { name: "React", img: "./icons/skills/atom.png" },
-    { name: "Tailwind CSS", img: "./icons/skills/tailwind.svg" },
-    { name: "NextJS", img: "./icons/skills/nextjs.svg" },
-    { name: "TypeScript", img: "./icons/skills/typescript.png" },
-    { name: "HTML", img: "./icons/skills/html.png" },
-    { name: "CSS", img: "./icons/skills/css-3.png" },
-    { name: "JavaScript", img: "./icons/skills/java-script.png" },
-    { name: "Java", img: "./icons/skills/java.png" },
-    { name: "Vercel", img: "./icons/skills/vercel.ico" },
-    { name: "Neon", img: "./icons/skills/neon.png" },
-    { name: "MySQL", img: "./icons/skills/mysql.png" },
-    { name: "Git", img: "./icons/skills/github.png" }
-  ],
-    video:"./videos/tech-skills.mp4"
+      { name: "React", img: "./icons/skills/atom.png" },
+      { name: "Tailwind CSS", img: "./icons/skills/tailwind.svg" },
+      { name: "NextJS", img: "./icons/skills/nextjs.svg" },
+      { name: "TypeScript", img: "./icons/skills/typescript.png" },
+      { name: "HTML", img: "./icons/skills/html.png" },
+      { name: "CSS", img: "./icons/skills/css-3.png" },
+      { name: "JavaScript", img: "./icons/skills/java-script.png" },
+      { name: "Java", img: "./icons/skills/java.png" },
+      { name: "Vercel", img: "./icons/skills/vercel.ico" },
+      { name: "Neon", img: "./icons/skills/neon.png" },
+      { name: "MySQL", img: "./icons/skills/mysql.png" },
+      { name: "Git", img: "./icons/skills/github.png" },
+    ],
+    video: "./videos/tech-skills.mp4",
   },
   {
     category: "Soft Skills",
     description: null,
     skills: [
-          {
+      {
         name: "Self-reliant",
-        img: "https://img.icons8.com/?size=100&id=Ib9FADThtmSf&format=png&color=000000"
+        img: "https://img.icons8.com/?size=100&id=Ib9FADThtmSf&format=png&color=000000",
       },
       {
         name: "Resourceful",
-        img: "https://img.icons8.com/ios/50/light-on--v1.png"
+        img: "https://img.icons8.com/ios/50/light-on--v1.png",
       },
       {
         name: "Creativity",
-        img: "https://img.icons8.com/?size=100&id=24879&format=png&color=000000"
+        img: "https://img.icons8.com/?size=100&id=24879&format=png&color=000000",
       },
       {
         name: "Accountability",
-        img: "https://img.icons8.com/ios-filled/50/task.png"
+        img: "https://img.icons8.com/ios-filled/50/task.png",
       },
       {
         name: "Attention to detail",
-        img: "https://img.icons8.com/ios-filled/50/search--v1.png"
+        img: "https://img.icons8.com/ios-filled/50/search--v1.png",
       },
       {
         name: "Problem-solving",
-        img: "https://img.icons8.com/?size=100&id=AhErnSqOm1fj&format=png&color=000000"
+        img: "https://img.icons8.com/?size=100&id=AhErnSqOm1fj&format=png&color=000000",
       },
-        {
-          name: "Time management",
-          img: "https://img.icons8.com/?size=100&id=70301&format=png&color=000000"
-        },
-        {
-          name: "Adaptability",
-          img: "https://img.icons8.com/?size=100&id=11168&format=png&color=000000"
-        }
+      {
+        name: "Time management",
+        img: "https://img.icons8.com/?size=100&id=70301&format=png&color=000000",
+      },
+      {
+        name: "Adaptability",
+        img: "https://img.icons8.com/?size=100&id=11168&format=png&color=000000",
+      },
     ],
-    video:"./videos/soft-skills.mp4"
-  }
+    video: "./videos/soft-skills.mp4",
+  },
 ];
 
 export const statistics = [
-    { value: '1k+', label: 'Brands' },
-    { value: '500+', label: 'Shops' },
-    { value: '250k+', label: 'Customers' },
+  { value: "1k+", label: "Brands" },
+  { value: "500+", label: "Shops" },
+  { value: "250k+", label: "Customers" },
 ];
 
-  
 // export const products = [
 //     {
 //         imgURL: shoe,
@@ -228,102 +219,110 @@ export const statistics = [
 //   }
 // };
 
-
-
 export const faq = [
   {
     id: "0",
     question: "Как да избера правилния размер обувки?",
-    answer: "Препоръчваме да измерите крака си и да използвате нашата таблица с размери, за да намерите най-подходящия номер."
+    answer:
+      "Препоръчваме да измерите крака си и да използвате нашата таблица с размери, за да намерите най-подходящия номер.",
   },
   {
     id: "1",
     question: "Как да се грижа за маратонките си?",
-    answer: "За почистване използвайте мека четка и сапунена вода. Не ги перете в пералня, за да избегнете повреди."
+    answer:
+      "За почистване използвайте мека четка и сапунена вода. Не ги перете в пералня, за да избегнете повреди.",
   },
   {
     id: "2",
     question: "Предлагате ли безплатна доставка?",
-    answer: "Да, предлагаме безплатна доставка за поръчки над 100 лв. в рамките на България."
+    answer:
+      "Да, предлагаме безплатна доставка за поръчки над 100 лв. в рамките на България.",
   },
   {
     id: "3",
     question: "Как мога да върна или заменя поръчка?",
-    answer: "Можете да върнете или замените поръчката си в рамките на 14 дни, ако обувките не са носени и са в оригиналната им опаковка."
+    answer:
+      "Можете да върнете или замените поръчката си в рамките на 14 дни, ако обувките не са носени и са в оригиналната им опаковка.",
   },
   {
     id: "4",
     question: "Какви методи на плащане приемате?",
-    answer: "Приемаме плащания с кредитни и дебитни карти, наложен платеж и PayPal."
+    answer:
+      "Приемаме плащания с кредитни и дебитни карти, наложен платеж и PayPal.",
   },
   {
     id: "5",
     question: "Как мога да проверя статуса на поръчката си?",
-    answer: "След изпращане на поръчката ще получите имейл с номер за проследяване, с който можете да следите статуса на вашата доставка."
+    answer:
+      "След изпращане на поръчката ще получите имейл с номер за проследяване, с който можете да следите статуса на вашата доставка.",
   },
   {
     id: "6",
     question: "Предлагате ли отстъпки или промоции?",
-    answer: "Да! Следете нашите социални мрежи и се абонирайте за бюлетина ни, за да получавате информация за нови промоции и отстъпки."
+    answer:
+      "Да! Следете нашите социални мрежи и се абонирайте за бюлетина ни, за да получавате информация за нови промоции и отстъпки.",
   },
   {
     id: "7",
     question: "Как мога да направя поръчка?",
-    answer: "Добавете желаните продукти в количката, отидете на касата и следвайте инструкциите за плащане и доставка."
+    answer:
+      "Добавете желаните продукти в количката, отидете на касата и следвайте инструкциите за плащане и доставка.",
   },
   {
     id: "8",
     question: "Как да разбера дали даден модел е наличен?",
-    answer: "Всяка продуктова страница показва наличността. Ако даден размер е изчерпан, можете да се абонирате за известие, когато отново стане наличен."
+    answer:
+      "Всяка продуктова страница показва наличността. Ако даден размер е изчерпан, можете да се абонирате за известие, когато отново стане наличен.",
   },
   {
     id: "9",
     question: "Предлагате ли персонализирани маратонки?",
-    answer: "В момента не предлагаме персонализиране, но често имаме лимитирани колекции с уникални дизайни."
+    answer:
+      "В момента не предлагаме персонализиране, но често имаме лимитирани колекции с уникални дизайни.",
   },
   {
     id: "10",
     question: "Какъв е срокът за доставка?",
-    answer: "Стандартната доставка отнема 2-5 работни дни, в зависимост от вашето местоположение."
+    answer:
+      "Стандартната доставка отнема 2-5 работни дни, в зависимост от вашето местоположение.",
   },
   {
     id: "11",
     question: "Мога ли да сменя адреса за доставка след поръчка?",
-    answer: "Ако поръчката ви още не е изпратена, можете да се свържете с нас, за да променим адреса за доставка."
-  }
+    answer:
+      "Ако поръчката ви още не е изпратена, можете да се свържете с нас, за да променим адреса за доставка.",
+  },
 ];
 
-
-
 export const footerLinks = [
-    {
-        title: "Products",
-        links: [
-            { name: "Air Force 1", link: "/" },
-            { name: "Air Max 1", link: "/" },
-            { name: "Air Jordan 1", link: "/" },
-            { name: "Air Force 2", link: "/" },
-            { name: "Nike Waffle Racer", link: "/" },
-            { name: "Nike Cortez", link: "/" },
-        ],
-    },
-    {
-        title: "Help",
-        links: [
-            { name: "About us", link: "/" },
-            { name: "FAQs", link: "/" },
-            { name: "How it works", link: "/" },
-            { name: "Privacy policy", link: "/" },
-            { name: "Payment policy", link: "/" },
-        ],
-    },
-    {
-        title: "Get in touch",
-        links: [
-            { name: "customer@nike.com", link: "mailto:customer@nike.com" },
-            { name: "+92554862354", link: "tel:+92554862354" },
-        ],
-    },
+  {
+    title: "Products",
+    links: [
+      { name: "Air Force 1", link: "/" },
+      { name: "Air Max 1", link: "/" },
+      { name: "Air Jordan 1", link: "/" },
+      { name: "Air Force 2", link: "/" },
+      { name: "Nike Waffle Racer", link: "/" },
+      { name: "Nike Cortez", link: "/" },
+    ],
+  },
+  {
+    title: "Help",
+    links: [
+      { name: "About us", link: "/" },
+      { name: "FAQs", link: "/" },
+      { name: "How it works", link: "/" },
+      { name: "Privacy policy", link: "/" },
+      { name: "Payment policy", link: "/" },
+    ],
+  },
+  {
+    title: "Get in touch",
+    links: [
+      { name: "customer@nike.com", link: "mailto:customer@nike.com" },
+      { name: "+92554862354", link: "tel:+92554862354" },
+    ],
+  },
 ];
 
 // export const socialMedia = [

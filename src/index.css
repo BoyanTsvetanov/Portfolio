@@ -24,7 +24,7 @@
 }
 
 body {
-  @apply bg-light text-primary-light transition-colors duration-300 overflow-x-hidden;
+  @apply bg-light text-primary-light transition-colors duration-300 overflow-x-hidden w-full;
 }
 
 /* Dark Mode */
@@ -73,6 +73,12 @@ p {
     clip-path: polygon(0 0, 75% 0, 100% 100%, 25% 100%);
   }
 
+  .demo-button {
+    position: relative;
+    clip-path: polygon(5% 0, 100% 0, 100% 90%, 95% 100%, 0 100%, 0 10%);
+    z-index: 1;
+  }
+
   .project-card {
     position: relative;
     clip-path: polygon(3% 0, 100% 0, 100% 95%, 97% 100%, 0 100%, 0 5%);
@@ -82,14 +88,7 @@ p {
   .project-container::after {
     content: "";
     position: absolute;
-    inset: -1px; /* thickness of the border */
-    /* background: linear-gradient(
-      120deg,
-      rgba(255, 255, 255, 0.1) 5%,
-      transparent 20%,
-      transparent 80%,
-      rgba(255, 255, 255, 0.1) 95%
-    ); */
+    inset: -1px;
     clip-path: polygon(3% 0, 99% 1%, 100% 95%, 97% 100%, 1% 99%, 0 5%);
     backdrop-filter: brightness(2);
     z-index: -1;

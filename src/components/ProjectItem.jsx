@@ -63,7 +63,7 @@ const ProjectItem = ({
                 href={link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-light not-dark:bg-dark text-primary-light not-dark:text-primary-dark text-nowrap md:mt-4 mt-2 p-2 px-4 font-poppins font-bold text-3xl max-md:rounded max-md:text-lg max-sm:text-sm transition-all duration-500"
+                className="bg-light not-dark:bg-dark text-primary-light not-dark:text-primary-dark demo-button text-nowrap md:mt-4 mt-2 p-2 px-4 font-poppins font-bold text-3xl max-md:rounded max-md:text-lg max-sm:text-sm transition-all duration-500"
               >
                 Live Demo
               </a>

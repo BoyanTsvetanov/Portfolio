@@ -80,10 +80,10 @@ const Header = () => {
           <h1 className="font-bebas lg:text-4xl sm:text-2xl max-sm:text-lg">
             Boyan Tsvetanov
           </h1>
-          <p className="font-poppins max-md:text-sm">Web Developer</p>
+          <p className="font-poppins max-md:text-sm">Front-End Developer</p>
         </LinkScroll>
 
-        <div className="flex flex-row items-center justify-center gap-20">
+        <div className="relative w-fit flex flex-row items-center gap-10">
           {/* <button
             onClick={toggleTheme}
             className={clsx(
@@ -96,8 +96,10 @@ const Header = () => {
 
           <ul
             className={clsx(
-              "flex justify-center text-xl items-center gap-16 absolute max-lg:flex-col max-lg:text-4xl w-[100%] max-lg:h-screen max-lg:top-0 max-lg:right-0  max-lg:size-8 ",
-              isOpen ? "opacity-100" : "pointer-events-none opacity-0"
+              "relative flex justify-center text-xl items-center gap-16 max-lg:flex-col max-lg:text-4xl w-fit max-lg:h-screen max-lg:top-0 max-lg:right-0 max-lg:size-8 transition-all duration-500",
+              isOpen
+                ? "opacity-100 translate-y-0"
+                : "pointer-events-none opacity-0 -translate-y-1/4"
             )}
           >
             {navLinks.map((item) => (
@@ -116,18 +118,18 @@ const Header = () => {
               ></video>
             </div>
           </ul>
-        </div>
 
-        <button
-          className="block z-10"
-          onClick={() => setIsOpen((prevState) => !prevState)}
-        >
-          <img
-            src={`./icons/${isOpen ? "close" : "hamburger"}.svg`}
-            alt="menu"
-            className="p-1 mix-blend-difference invert w-9 h-9 hover:cursor-pointer"
-          />
-        </button>
+          <button
+            className="block z-10"
+            onClick={() => setIsOpen((prevState) => !prevState)}
+          >
+            <img
+              src={`./icons/${isOpen ? "close" : "hamburger"}.svg`}
+              alt="menu"
+              className="p-1 mix-blend-difference invert w-9 h-9 hover:cursor-pointer"
+            />
+          </button>
+        </div>
       </nav>
     </header>
   );
