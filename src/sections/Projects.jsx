@@ -93,9 +93,9 @@ export default function Projects() {
     <section
       name="Projects"
       ref={sectionRef}
-      className="relative w-full mx-auto md:mt-14"
+      className="relative w-full mx-auto"
     >
-      <div className="flex flex-col justify-center items-center max-md:mb-6 z-10 md:pt-6">
+      <div className="flex flex-col justify-center items-center max-md:mb-6 z-10 ">
         <h2 className="font-bold text-center font-poppins">Projects</h2>
         <h3 className="text-7xl max-md:text-5xl max-w-[94%] tracking-tight leading-none! font-bold text-center font-poppins z-10">
           Standout Work

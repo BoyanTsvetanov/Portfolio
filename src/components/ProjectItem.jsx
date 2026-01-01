@@ -31,7 +31,7 @@ const ProjectItem = ({
   }, []);
 
   return (
-    <div className="relative project w-full shrink-0 flex lg:items-center justify-center px-[10%] flex-row lg:gap-10 md:gap-5 z-10 max-lg:flex-col-reverse">
+    <div className="relative project w-full shrink-0 flex lg:items-center justify-center px-16 flex-row lg:gap-10 md:gap-5 z-10 max-lg:flex-col-reverse">
       <div className="lg:w-2/5 w-full h-fit flex flex-col md:items-start items-center justify-center max-md:justify-between max-md:bg-gray-200 max-md:dark:bg-[#1b1b1b] max-md:p-2 max-md:rounded-b-lg">
         <div className="relative flex flex-col items-start mb-2 max-md:mb-0 w-full">
           <div className="flex items-center justify-between w-full">
