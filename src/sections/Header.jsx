@@ -80,7 +80,9 @@ const Header = () => {
           <h1 className="font-bebas lg:text-4xl sm:text-2xl max-sm:text-lg">
             Boyan Tsvetanov
           </h1>
-          <p className="font-poppins max-md:text-sm">Front-End Developer</p>
+          <p className="font-poppins max-md:text-sm leading-none!">
+            Front-End Developer
+          </p>
         </LinkScroll>
 
         <div className="relative w-fit flex flex-row items-center gap-10">
