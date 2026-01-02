@@ -29,7 +29,7 @@ const Header = () => {
       spy
       smooth
       activeClass="nav-active"
-      className="font-sofiasans leading-normal z-10 cursor-pointer group max-lg:text-primary-dark  transition-colors duration-200"
+      className="font-sofiasans leading-normal uppercase z-10 cursor-pointer group max-lg:text-primary-dark  transition-colors duration-200"
     >
       {title}
       <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-white"></span>
@@ -42,19 +42,21 @@ const Header = () => {
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
-    const applyTheme = (e) => {
-      const isDark = e.matches;
+    const applySystemTheme = () => {
+      const isDark = mediaQuery.matches;
       setDarkMode(isDark);
       document.documentElement.classList.toggle("dark", isDark);
     };
 
-    // Initial check
-    applyTheme(mediaQuery);
+    // Apply on mount
+    applySystemTheme();
 
-    // Listen for system theme changes
-    mediaQuery.addEventListener("change", applyTheme);
+    // React to system changes
+    mediaQuery.addEventListener("change", applySystemTheme);
 
-    return () => mediaQuery.removeEventListener("change", applyTheme);
+    return () => {
+      mediaQuery.removeEventListener("change", applySystemTheme);
+    };
   }, []);
 
   // Toggle theme and save to localStorage

@@ -93,7 +93,7 @@ export default function Projects() {
     <section
       name="Projects"
       ref={sectionRef}
-      className="relative w-full mx-auto"
+      className="relative w-full mx-auto  overflow-x-hidden"
     >
       <div className="flex flex-col justify-center items-center max-md:mb-6 z-10 ">
         <h2 className="font-bold text-center font-poppins">Projects</h2>

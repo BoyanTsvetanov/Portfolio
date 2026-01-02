@@ -79,7 +79,7 @@ const About = () => {
   return (
     <section
       name="About"
-      className="flex items-center w-full h-dvh relative max-md:my-10"
+      className="flex items-center w-full h-dvh relative max-md:my-10 mb-6"
       ref={sectionRef}
     >
       <video
@@ -98,7 +98,7 @@ const About = () => {
           About Me
         </h2>
         <p
-          className="font-montserrat text-pretty md:text-xl max-md:text-sm leading-normal"
+          className="font-montserrat text-pretty md:text-4xl max-md:text-sm leading-normal"
           ref={textRef}
         >
           An independent and self-motivated Front-End Developer looking to apply
