@@ -81,7 +81,7 @@ export const skillsData = [
       { name: "MySQL", img: "./icons/skills/mysql.png" },
       { name: "Git", img: "./icons/skills/github.png" },
     ],
-    video: "./videos/tech-skills.mp4",
+    video: "./videos/tech-skills1.mp4",
   },
   {
     category: "Soft Skills",
@@ -120,7 +120,7 @@ export const skillsData = [
         img: "https://img.icons8.com/?size=100&id=11168&format=png&color=000000",
       },
     ],
-    video: "./videos/soft-skills.mp4",
+    video: "./videos/soft-skills1.mp4",
   },
 ];
 

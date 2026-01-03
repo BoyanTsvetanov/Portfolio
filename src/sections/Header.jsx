@@ -69,10 +69,13 @@ const Header = () => {
   return (
     <header
       className={clsx(
-        "px-16 max-md:px-8 fixed z-50 w-full mix-blend-difference text-white transition-all duration-500",
+        "px-16 max-md:px-8 fixed z-50 w-full transition-all duration-500",
         hasScrolled
           ? "lg:py-6 md:py-4 max-md:py-2"
-          : "lg:py-6 md:py-4 max-md:py-2"
+          : "lg:py-6 md:py-4 max-md:py-2",
+        isOpen
+          ? "md:mix-blend-difference text-white"
+          : "mix-blend-difference text-white"
       )}
     >
       <nav className="flex justify-between items-center max-md:justify-between ">
@@ -87,7 +90,7 @@ const Header = () => {
           </p>
         </LinkScroll>
 
-        <div className="relative w-fit flex flex-row items-center gap-10">
+        <div className="lg:relative w-fit flex flex-row items-center gap-10">
           {/* <button
             onClick={toggleTheme}
             className={clsx(
@@ -100,7 +103,7 @@ const Header = () => {
 
           <ul
             className={clsx(
-              "relative flex justify-center text-xl items-center gap-16 max-lg:flex-col max-lg:text-4xl w-fit max-lg:h-screen max-lg:top-0 max-lg:right-0 max-lg:size-8 transition-all duration-500",
+              "relative max-lg:absolute max-md:bg-dark flex justify-center text-xl items-center gap-16 max-lg:flex-col max-lg:text-4xl w-fit max-lg:w-full max-lg:left-1/2 max-lg:-translate-x-1/2 max-lg:h-screen max-lg:top-0 max-lg:right-0 max-lg:size-8 transition-all duration-500",
               isOpen
                 ? "opacity-100 translate-y-0"
                 : "pointer-events-none opacity-0 -translate-y-1/4"
@@ -112,7 +115,7 @@ const Header = () => {
               </li>
             ))}
 
-            <div className="hidden max-lg:block w-full h-full inset-0 absolute">
+            {/* <div className="hidden max-lg:block w-full h-full inset-0 absolute mix-blend-normal!">
               <video
                 src="./videos/slidebar1.mp4"
                 muted
@@ -120,7 +123,7 @@ const Header = () => {
                 loop
                 className="absolute w-full object-cover h-full"
               ></video>
-            </div>
+            </div> */}
           </ul>
 
           <button

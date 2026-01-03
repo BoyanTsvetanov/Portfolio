@@ -79,7 +79,7 @@ const About = () => {
   return (
     <section
       name="About"
-      className="flex items-center w-full h-dvh relative max-md:my-10 mb-6"
+      className="flex max-lg:flex-col items-center justify-center w-full h-dvh relative mb-6"
       ref={sectionRef}
     >
       <video
@@ -90,15 +90,15 @@ const About = () => {
         className="absolute w-full h-full object-cover -z-10 not-dark:invert touch-none transition-all duration-300"
       ></video>
 
-      <div className="absolute left-0 flex flex-col w-3/5 h-2/5 min-h-[25%] text-primary-dark mix-blend-difference px-16 sm:py-3 justify-center max-lg:text-center text-pretty max-md:text-sm">
+      <div className="absolute max-lg:relative left-0 flex flex-col w-full sm:w-3/5 sm:h-2/5 h-fit min-h-[25%] text-primary-dark mix-blend-difference px-16 sm:py-3 justify-center max-lg:text-center text-pretty max-md:text-sm">
         <h2
-          className="font-bold font-poppins text-7xl lg:my-2 max-lg:mb-2 max-sm:hidden"
+          className="font-bold font-poppins text-7xl max-md:text-5xl lg:my-2 max-lg:mb-2"
           ref={headingRef}
         >
           About Me
         </h2>
         <p
-          className="font-montserrat text-pretty md:text-4xl max-md:text-sm leading-normal"
+          className="font-montserrat text-pretty md:text-4xl text-lg leading-normal"
           ref={textRef}
         >
           An independent and self-motivated Front-End Developer looking to apply
@@ -107,7 +107,7 @@ const About = () => {
         </p>
       </div>
 
-      <div className="w-2/5 h-[80%] absolute right-0 bottom-0 overflow-hidden">
+      <div className="lg:w-2/5 w-full h-[80%]  max-lg:hidden lg:absolute right-0 bottom-0 overflow-hidden">
         <img
           ref={pictureRef}
           src="./images/about.png"
@@ -117,7 +117,7 @@ const About = () => {
         />
       </div>
       {/* <div className="relative flex max-md:flex-col w-full max-h-80 h-80 rounded-2xl justify-center items-center">
-        <div className='relative sm:w-full md:h-full h-3/5 rounded-2xl max-sm:rounded-full max-lg:aspect-square overflow-hidden'>
+        <div className='relative sm:w-full md:h-full h-3/5 rounded-2xl max-lg:rounded-full max-lg:aspect-square overflow-hidden'>
           <video
             src="./videos/about.mp4"
             autoPlay
@@ -138,7 +138,7 @@ const About = () => {
         </div>
 
         <div className="relative flex flex-col w-full h-2/5 min-h-[25%] px-6 sm:py-3 justify-center max-lg:text-center text-pretty max-md:text-sm">
-         <h2 className="font-bold font-poppins text-2xl lg:my-2 max-lg:mb-2 max-sm:hidden">About Me</h2>
+         <h2 className="font-bold font-poppins text-2xl lg:my-2 max-lg:mb-2 max-lg:hidden">About Me</h2>
           <p className="font-montserrat text-pretty md:text-lg max-md:text-sm leading-normal">
             An independent and self-motivated Front-End Developer looking to apply my knowledge and skills in programming. I love creating beautiful programs with attention to detail.
           </p>

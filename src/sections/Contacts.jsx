@@ -24,13 +24,13 @@ const Contacts = () => {
             <p className="lg:text-xs">boyantsvetanov05@gmail.com</p>
           </a>
           <a
-            href="tel:0887377160"
+            href="tel:+359887377160"
             title="Phone"
             className="bg-gray-200 dark:bg-[#363636] flex flex-col justify-center items-center p-2 w-full h-full max-w-2xs xl:max-w-56 aspect-square rounded-lg gap-2 hover:-translate-y-4 transition-transform duration-300"
           >
             <i className="fas fa-phone text-5xl"></i>
             <h3 className="text-xl font-bold">Phone</h3>
-            <p>0887377160</p>
+            <p>+359887377160</p>
           </a>
           <a
             href="/"
