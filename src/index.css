@@ -1,5 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=BioRhyme:wdth,wght@100..125,200..800&family=Oswald:wght@400;600;700&family=Russo+One&family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;600;700&family=Sofia+Sans:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
+/* @font-face {
+  font-family: "Techno";
+  src: url("/fonts/Tr2n.ttf") format("truetype");
+} */
+
 @import "tailwindcss";
 
 @custom-variant dark (&:where(.dark, .dark *));
@@ -33,12 +38,13 @@ body {
 }
 
 /* .nav-active {
-    @apply text-accent-red;
-  }
+  @apply text-accent-red;
+}
 
-  .nav-active span {
-    @apply bg-accent-red max-w-full;
-  } */
+.nav-active span {
+  @apply bg-accent-red max-w-full;
+} */
+
 h1,
 h2,
 h3,
@@ -64,6 +70,23 @@ p {
     }
       */
 
+  .mask-fade {
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      transparent,
+      black 15%,
+      black 85%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      transparent,
+      black 15%,
+      black 85%,
+      transparent 100%
+    );
+  }
+
   .logo {
     color: white;
     mix-blend-mode: difference;
@@ -73,10 +96,66 @@ p {
     clip-path: polygon(0 0, 75% 0, 100% 100%, 25% 100%);
   }
 
+  .cta-button {
+    position: relative;
+    clip-path: polygon(5% 0, 100% 0, 100% 80%, 95% 100%, 0 100%, 0 20%);
+    z-index: 1;
+  }
+
+  .cta-button::after {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    clip-path: polygon(5% 0, 100% 0, 100% 80%, 95% 100%, 0 100%, 0 20%);
+    backdrop-filter: brightness(2);
+    z-index: -1;
+    transition: all 0.5s ease;
+  }
+  .cta-button:hover {
+    padding-inline: 24px;
+    /* transform: translateX(2px) translateY(-2px); */
+  }
+  .cta-button:hover::after {
+    transform: translateX(6px) translateY(-6px);
+    /* background-color: var(--color-red-700); */
+    /* background: linear-gradient(120deg, red, var(--color-accent-red), red); */
+    /* background: linear-gradient(90deg, navy, var(--color-accent-dark-red)); */
+    /* border: 2px solid var(--color-primary-dark); */
+  }
+
+  .cta-arrow {
+    animation: cta-arrow 2s infinite;
+  }
+
   .demo-button {
     position: relative;
     clip-path: polygon(5% 0, 100% 0, 100% 90%, 95% 100%, 0 100%, 0 10%);
     z-index: 1;
+  }
+
+  /* .demo-button:hover {
+    transform: translateX(2px) translateY(0);
+  } */
+
+  .demo-button::after {
+    content: "";
+    position: absolute;
+    background: var(--color-dark);
+    mix-blend-mode: difference;
+    inset: -2px;
+    clip-path: polygon(5% 0, 100% 0, 100% 90%, 95% 100%, 0 100%, 0 10%);
+    z-index: -1;
+    transition: all 0.5s ease;
+  }
+
+  .demo-button:hover {
+    padding-inline: 32px;
+  }
+
+  .demo-button:hover::after {
+    transform: translateX(6px) translateY(-6px);
+    /* background: linear-gradient(120deg, red, var(--color-accent-red), red); */
+    border: 1px solid white;
   }
 
   .project-card {
@@ -109,6 +188,13 @@ p {
   .columnI {
     animation: grow;
   }
+
+  .contact-left {
+    display: flex;
+    width: fit-content;
+    gap: 12px;
+    align-items: center;
+  }
 }
 
 @layer base {
@@ -129,6 +215,26 @@ p {
       height: 0%;
       opacity: 0;
       display: none;
+    }
+  }
+  @keyframes cta-arrow {
+    0% {
+      transform: translateX(0) translateY(0);
+    }
+    50% {
+      transform: translateX(4px) translateY(0);
+    }
+    100% {
+      transform: translateX(0) translateY(0);
+    }
+  }
+  @keyframes bounce {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
     }
   }
 }

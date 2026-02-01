@@ -1,13 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef, use } from "react";
 import { navLinks } from "../constants";
 import clsx from "clsx";
 import { Link as LinkScroll } from "react-scroll";
 import { Sun, Moon } from "lucide-react";
 import { getTheme, setTheme } from "../constants/theme.js";
+import { gsap } from "gsap";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
+  const navRef = useRef(null);
+  const [blendEnabled, setBlendEnabled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,10 +32,10 @@ const Header = () => {
       spy
       smooth
       activeClass="nav-active"
-      className="font-sofiasans leading-normal uppercase z-10 cursor-pointer group max-lg:text-primary-dark  transition-colors duration-200"
+      className="font-bebas leading-none uppercase z-10 cursor-pointer group text-primary-dark  transition-colors duration-200"
     >
       {title}
-      <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-white"></span>
+      <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-2 bg-white"></span>
     </LinkScroll>
   );
 
@@ -40,7 +43,7 @@ const Header = () => {
 
   // Load theme from localStorage on mount
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: light)");
 
     const applySystemTheme = () => {
       const isDark = mediaQuery.matches;
@@ -59,6 +62,44 @@ const Header = () => {
     };
   }, []);
 
+  useEffect(() => {
+    if (!navRef.current) return;
+
+    gsap.set(navRef.current, { transformOrigin: "right top" });
+
+    if (isOpen) {
+      // lock scroll
+      document.body.style.overflow = "hidden";
+      setBlendEnabled(false);
+
+      gsap.to(navRef.current, {
+        xPercent: 0,
+        // rotation: 0,
+        y: 0,
+        // transformOrigin: "right top",
+        duration: 0.5,
+        ease: "power3.out",
+      });
+    } else {
+      gsap.to(navRef.current, {
+        xPercent: 100,
+        // rotation: -90,
+        y: window.innerHeight,
+        duration: 0.4,
+        ease: "power3.in",
+        onComplete: () => {
+          // unlock scroll AFTER animation
+          document.body.style.overflow = "";
+          setBlendEnabled(true);
+        },
+      });
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
   // Toggle theme and save to localStorage
   //   const toggleTheme = () => {
   //     const next = darkMode ? "light" : "dark";
@@ -73,13 +114,14 @@ const Header = () => {
         hasScrolled
           ? "lg:py-6 md:py-4 max-md:py-2"
           : "lg:py-6 md:py-4 max-md:py-2",
-        isOpen
-          ? "md:mix-blend-difference text-white"
-          : "mix-blend-difference text-white"
+        blendEnabled && "mix-blend-difference text-white",
+        // isOpen
+        //   ? "lg:mix-blend-difference text-white"
+        //   : "mix-blend-difference text-white",
       )}
     >
-      <nav className="flex justify-between items-center max-md:justify-between ">
-        <LinkScroll to="Hero" className="" smooth>
+      <nav className="flex justify-between items-center max-md:justify-between">
+        <LinkScroll to="Hero" className="mix-blend-difference" smooth>
           {/* <img src="./icons/logo-light.png" alt="logo" width={130}/> */}
 
           <h1 className="font-bebas lg:text-4xl sm:text-2xl max-sm:text-lg">
@@ -101,21 +143,32 @@ const Header = () => {
             {darkMode ? <Sun size={20} /> : <Moon size={20} />}
           </button> */}
 
-          <ul
-            className={clsx(
-              "relative max-lg:absolute max-md:bg-dark flex justify-center text-xl items-center gap-16 max-lg:flex-col max-lg:text-4xl w-fit max-lg:w-full max-lg:left-1/2 max-lg:-translate-x-1/2 max-lg:h-screen max-lg:top-0 max-lg:right-0 max-lg:size-8 transition-all duration-500",
-              isOpen
-                ? "opacity-100 translate-y-0"
-                : "pointer-events-none opacity-0 -translate-y-1/4"
-            )}
+          <button
+            className="block z-50"
+            onClick={() => setIsOpen((prevState) => !prevState)}
           >
-            {navLinks.map((item) => (
-              <li key={item.label} className="z-10">
-                <NavLink title={item.label}></NavLink>
-              </li>
-            ))}
+            <img
+              src={`./icons/${isOpen ? "close" : "hamburger"}.svg`}
+              alt="menu"
+              className="p-1 w-9 h-9 hover:cursor-pointer invert"
+            />
+          </button>
+        </div>
+        <ul
+          ref={navRef}
+          className="fixed inset-0 w-full h-dvh bg-dark flex flex-col justify-center items-start px-16 max-md:px-8 text-8xl z-40"
+          // isOpen
+          //   ? "opacity-100 translate-y-0"
+          //   : "pointer-events-none opacity-0 -translate-y-1/4",
+          // )}
+        >
+          {navLinks.map((item) => (
+            <li key={item.label}>
+              <NavLink title={item.label}></NavLink>
+            </li>
+          ))}
 
-            {/* <div className="hidden max-lg:block w-full h-full inset-0 absolute mix-blend-normal!">
+          {/* <div className="hidden max-lg:block w-full h-full inset-0 absolute mix-blend-normal!">
               <video
                 src="./videos/slidebar1.mp4"
                 muted
@@ -124,19 +177,7 @@ const Header = () => {
                 className="absolute w-full object-cover h-full"
               ></video>
             </div> */}
-          </ul>
-
-          <button
-            className="block z-10"
-            onClick={() => setIsOpen((prevState) => !prevState)}
-          >
-            <img
-              src={`./icons/${isOpen ? "close" : "hamburger"}.svg`}
-              alt="menu"
-              className="p-1 mix-blend-difference invert w-9 h-9 hover:cursor-pointer"
-            />
-          </button>
-        </div>
+        </ul>
       </nav>
     </header>
   );

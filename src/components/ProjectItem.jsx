@@ -13,7 +13,7 @@ const ProjectItem = ({
   link,
 }) => {
   const [isSmallScreen, setIsSmallScreen] = useState(
-    typeof window !== "undefined" && window.innerWidth < 768
+    typeof window !== "undefined" && window.innerWidth < 768,
   );
   const [isOpen, setIsOpen] = useState(false);
 
@@ -31,7 +31,7 @@ const ProjectItem = ({
   }, []);
 
   return (
-    <div className="relative project w-full shrink-0 flex lg:items-center justify-center px-16 flex-row lg:gap-10 md:gap-5 z-10 max-lg:flex-col-reverse">
+    <div className="relative project w-full shrink-0 flex lg:items-center justify-center px-16 max-md:px-8 flex-row lg:gap-10 md:gap-5 z-10 max-lg:flex-col-reverse">
       <div className="lg:w-2/5 w-full h-fit flex flex-col md:items-start items-center justify-center max-md:justify-between max-md:bg-gray-200 max-md:dark:bg-[#1b1b1b] max-md:p-2 max-md:rounded-b-lg">
         <div className="relative flex flex-col items-start mb-2 max-md:mb-0 w-full">
           <div className="flex items-center justify-between w-full">
@@ -56,14 +56,14 @@ const ProjectItem = ({
                 <p className='text-xl max-md:text-lg max-sm:text-sm font-sofiasans'>{subtitle}</p>
               )} */}
               <p className="text-lg font-sofiasans text-current/75">{date}</p>
-              <p className="text-xl text-pretty max-md:text-lg max-sm:text-sm font-sofiasans leading-normal">
+              <p className="text-xl text-pretty max-md:text-lg max-sm:text-lg font-sofiasans leading-normal">
                 {description}
               </p>
               <a
                 href={link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-light not-dark:bg-dark text-primary-light not-dark:text-primary-dark demo-button text-nowrap md:mt-4 mt-2 p-2 px-4 font-poppins font-bold text-3xl max-md:rounded max-md:text-lg max-sm:text-sm transition-all duration-500"
+                className="dark:bg-light bg-dark text-primary-light not-dark:text-primary-dark demo-button text-nowrap md:mt-4 mt-2 p-2 px-4 font-poppins font-bold text-3xl max-md:rounded max-md:text-xl transition-all duration-500"
               >
                 Live Demo
               </a>

@@ -6,9 +6,9 @@ const Skills = () => {
   return (
     <section
       name="Skills"
-      className="relative flex max-xl:flex-col justify-center xl:justify-between px-16 gap-8 items-stretch"
+      className="relative flex max-xl:flex-col justify-center xl:justify-between px-16 max-md:px-8 xl:gap-8 items-stretch"
     >
-      <div className="flex flex-col justify-center items-center pointer-events-none mix-blend-difference text-primary-dark max-xl:mx-auto xl:[writing-mode:vertical-rl] xl:rotate-180 max-xl:mb-8 px-10 z-10">
+      <div className="flex flex-col justify-center items-center pointer-events-none mix-blend-difference text-primary-dark max-xl:mx-auto xl:[writing-mode:vertical-rl] xl:rotate-180 max-xl:mb-8 xl:px-10 max-xl:pt-8 z-10">
         <h2 className="font-bold text-center font-poppins">Skills</h2>
         <h3 className="xl:text-[110px] text-7xl max-md:text-5xl tracking-tight font-bold text-center font-poppins">
           Expertise

@@ -1,66 +1,72 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 
 const SkillsItem = ({ category, description, skills, video }) => {
+  const containerRef = useRef(null);
   const videoRef = useRef(null);
-  const enterRef = useRef(null);
-  const leaveRef = useRef(null);
   const skillsRef = useRef([]);
-  const [isActive, setIsActive] = useState(false);
+  const tl = useRef(null);
+
+  const canHover = () =>
+    window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
   useEffect(() => {
-    gsap.set(videoRef.current, {
-      clipPath: "circle(0% at 50% 50%)",
-      opacity: 1,
-    });
+    if (!canHover()) return;
 
-    enterRef.current = () => {
-      setIsActive(true);
-
-      gsap.to(videoRef.current, {
-        clipPath: "circle(150% at 50% 50%)",
-        duration: 0.5,
-        ease: "power3.out",
-      });
-    };
-
-    leaveRef.current = () => {
-      setIsActive(false);
-
-      gsap.to(videoRef.current, {
+    const ctx = gsap.context(() => {
+      // Initial states
+      gsap.set(videoRef.current, {
         clipPath: "circle(0% at 50% 50%)",
-        duration: 0.6,
-        ease: "power3.inOut",
+        autoAlpha: 1,
       });
-    };
+
+      gsap.set(skillsRef.current, {
+        autoAlpha: 0,
+        y: 10,
+        scale: 0.95,
+      });
+
+      // SINGLE timeline
+      tl.current = gsap.timeline({ paused: true });
+
+      tl.current
+        .to(videoRef.current, {
+          clipPath: "circle(150% at 50% 50%)",
+          duration: 0.5,
+          ease: "power3.out",
+        })
+        .to(
+          skillsRef.current,
+          {
+            autoAlpha: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.4,
+            stagger: 0.06,
+            ease: "power2.out",
+          },
+          "<", // start at same time
+        );
+    }, containerRef);
+
+    return () => ctx.revert();
   }, []);
 
-  useEffect(() => {
-    if (!isActive || !skillsRef.current.length) return;
+  const handleEnter = () => {
+    tl.current?.timeScale(1).play();
+  };
 
-    gsap.fromTo(
-      skillsRef.current,
-      {
-        opacity: 0,
-        y: 20,
-        scale: 0.95,
-      },
-      {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        duration: 0.4,
-        ease: "power2.out",
-        stagger: 0.06,
-      }
-    );
-  }, [isActive]);
+  const handleLeave = () => {
+    // faster reverse feels more premium
+    tl.current?.timeScale(1.4).reverse();
+  };
 
   return (
     <div
-      className="text-pretty w-full flex-2/4 hover:flex-3/4 border-b-2 first:border-t-2 flex flex-col transition-all duration-200 group"
-      onMouseEnter={() => enterRef.current?.()}
-      onMouseLeave={() => leaveRef.current?.()}
+      ref={containerRef}
+      className="text-pretty w-full flex-2/4 hover:flex-3/4 max-sm:min-h-60 gap-2 border-b-2 first:border-t-2 flex flex-col max-xl:py-4 transition-all duration-200 group"
+      onMouseEnter={handleEnter}
+      onMouseLeave={handleLeave}
     >
       <video
         ref={videoRef}
@@ -69,19 +75,22 @@ const SkillsItem = ({ category, description, skills, video }) => {
         loop
         muted
         playsInline
-        className="absolute inset-0 w-full h-full object-cover saturate-0 contrast-150 -z-10 pointer-events-none"
+        className="absolute inset-0 w-full h-full object-cover saturate-0 contrast-150 -z-10 pointer-events-none hidden xl:block"
       />
-      <h4 className="text-8xl max-md:text-2xl mix-blend-difference text-primary-dark font-sofiasans italic font-semibold transition-all duration-300">
+
+      <h4 className="text-8xl max-lg:text-5xl max-lg:self-center max-lg:justify-self-center mix-blend-difference text-primary-dark font-sofiasans sm:tracking-tighter! sm:italic font-semibold transition-all duration-300">
         {category}
       </h4>
 
-      {isActive && skills && (
-        <div className="flex flex-row w-full gap-2.5 justify-start items-start flex-wrap transition-all duration-500">
+      {skills && (
+        <div className="flex flex-row max-sm:grid max-sm:grid-cols-2 w-full gap-2.5 justify-start items-start flex-wrap transition-all duration-500">
+          {(skillsRef.current = [])}
+
           {skills.map((skill, index) => (
             <div
               key={index}
-              ref={(el) => (skillsRef.current[index] = el)}
-              className="flex flex-row items-center gap-2 border-2 border-white rounded w-1/6 h-12 relative p-2 mix-blend-difference backdrop-brightness-20"
+              ref={(el) => el && (skillsRef.current[index] = el)}
+              className="flex flex-row items-center max-sm:justify-center gap-2 border-2 border-white rounded xl:w-1/6 w-fit max-sm:w-full h-12 relative p-2 mix-blend-difference xl:backdrop-brightness-20"
             >
               <img
                 src={skill.img}
@@ -89,7 +98,7 @@ const SkillsItem = ({ category, description, skills, video }) => {
                 className="h-full object-contain invert"
               />
 
-              <p className="text-white">{skill.name}</p>
+              <p className="text-white leading-none!">{skill.name}</p>
             </div>
           ))}
         </div>
@@ -99,22 +108,3 @@ const SkillsItem = ({ category, description, skills, video }) => {
 };
 
 export default SkillsItem;
-
-{
-  /* <div className="grid grid-cols-2 w-full h-full justify-center items-center gap-2.5 flex-wrap pb-2 px-2">
-        {skills.map((skill, index) => (
-          <div
-            key={index}
-            className="w-full h-full flex dark:bg-[#363636] bg-gray-200 rounded-xl justify-center items-center text-center max-lg:h-24 max-md:h-16 p-2 md:text-xl transition-transform duration-200"
-          >
-            <img
-              src={skill.img}
-              alt={skill.name}
-              loading="lazy"
-              className="w-8 h-8 max-md:w-6 max-md:h-6 mr-2 dark:invert transition-all duration-300"
-            />
-            <p>{skill.name}</p>
-          </div>
-        ))}
-      </div> */
-}
