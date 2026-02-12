@@ -32,10 +32,10 @@ const ProjectItem = ({
 
   return (
     <div className="relative project w-full shrink-0 flex lg:items-center justify-center px-16 max-md:px-8 flex-row lg:gap-10 md:gap-5 z-10 max-lg:flex-col-reverse">
-      <div className="lg:w-2/5 w-full h-fit flex flex-col md:items-start items-center justify-center max-md:justify-between max-md:bg-gray-200 max-md:dark:bg-[#1b1b1b] max-md:p-2 max-md:rounded-b-lg">
+      <div className="lg:w-2/5 w-full h-fit flex flex-col md:items-start items-center justify-center max-md:justify-between max-md:p-2 card-background">
         <div className="relative flex flex-col items-start mb-2 max-md:mb-0 w-full">
           <div className="flex items-center justify-between w-full">
-            <h2 className="text-4xl font-poppins font-bold max-sm:text-2xl">
+            <h2 className="text-4xl font-poppins max-sm:font-sofiasans font-bold max-sm:text-2xl max-sm:uppercase">
               {title}
             </h2>
             <button
@@ -63,7 +63,7 @@ const ProjectItem = ({
                 href={link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="dark:bg-light bg-dark text-primary-light not-dark:text-primary-dark demo-button text-nowrap md:mt-4 mt-2 p-2 px-4 font-poppins font-bold text-3xl max-md:rounded max-md:text-xl transition-all duration-500"
+                className="dark:bg-light bg-dark text-primary-light not-dark:text-primary-dark demo-button text-nowrap md:mt-4 mt-2 p-2 px-4 font-poppins font-bold text-3xl max-md:text-xl transition-all duration-500"
               >
                 Live Demo
               </a>
@@ -83,7 +83,7 @@ const ProjectItem = ({
           <img
             src={`./${type}${images[1]}`}
             alt="project"
-            className="h-full object-cover max-md:rounded-t-lg group-hover:brightness-50 md:saturate-75 transition-all duration-300 project-card"
+            className="h-full object-cover group-hover:brightness-50 md:saturate-75 transition-all duration-300 project-card"
           />
           <img
             src={`./${type}${images[0]}`}

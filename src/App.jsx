@@ -1,18 +1,24 @@
+import { useState } from "react";
 import Header from "./sections/Header";
 import Hero from "./sections/Hero";
 import About from "./sections/About";
 import Projects from "./sections/Projects";
 import Skills from "./sections/Skills";
 import Contacts from "./sections/Contacts";
-import Intro from "./sections/Intro";
 import useLenisScroll from "./constants/scrollSmooth";
+import IntroNew from "./sections/IntroNew";
+import NoiseBackground from "./components/NoiseBackground";
 
 const App = () => {
-  useLenisScroll();
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useLenisScroll(menuOpen); // 👈 Lenis controlled here
+
   return (
     <main>
-      {/* <Intro/> */}
-      <Header />
+      <Header isOpen={menuOpen} setIsOpen={setMenuOpen} />
+      <IntroNew />
+      <NoiseBackground />
       <Hero />
       <About />
       <Projects />

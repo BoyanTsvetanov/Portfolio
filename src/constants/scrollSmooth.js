@@ -1,7 +1,10 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import Lenis from "@studio-freight/lenis";
 
-export default function useLenisScroll() {
+export default function useLenisScroll(isLocked = false) {
+  const lenisRef = useRef(null);
+  const rafId = useRef(null);
+
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1.2,
@@ -10,15 +13,29 @@ export default function useLenisScroll() {
       smoothTouch: false,
     });
 
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
+    lenisRef.current = lenis;
 
-    requestAnimationFrame(raf);
+    const raf = (time) => {
+      lenis.raf(time);
+      rafId.current = requestAnimationFrame(raf);
+    };
+
+    rafId.current = requestAnimationFrame(raf);
 
     return () => {
+      if (rafId.current) cancelAnimationFrame(rafId.current);
       lenis.destroy();
     };
   }, []);
+
+  // 🔥 Lock / unlock scrolling
+  useEffect(() => {
+    if (!lenisRef.current) return;
+
+    if (isLocked) {
+      lenisRef.current.stop();
+    } else {
+      lenisRef.current.start();
+    }
+  }, [isLocked]);
 }

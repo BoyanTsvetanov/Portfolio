@@ -95,23 +95,23 @@ const About = () => {
       className="flex max-lg:flex-col items-center justify-center w-full h-dvh relative mb-6 mask-fade"
       ref={sectionRef}
     >
-      <video
+      {/* <video
         src="./videos/about.mp4"
         autoPlay
         muted
         loop
-        className="absolute w-full h-full object-cover -z-10 not-dark:invert touch-none transition-all duration-300"
-      ></video>
+        className="object-cover not-dark:invert touch-none transition-all duration-300 pointer-events-none -z-20"
+      ></video> */}
 
-      <div className="absolute max-lg:relative left-0 flex flex-col w-full sm:w-3/5 sm:h-2/5 h-fit min-h-[25%] px-16 sm:py-3 justify-center max-lg:text-center text-pretty max-md:text-sm">
+      <div className="absolute max-lg:relative left-0 flex flex-col w-full sm:w-3/5 sm:h-2/5 h-fit min-h-[25%] px-16 sm:py-3 justify-center max-lg:text-center text-pretty max-md:text-sm pointer-events-auto z-20">
         <h2
-          className="font-bold font-poppins text-7xl max-md:text-5xl lg:my-2 max-lg:mb-2 text-primary-dark mix-blend-difference"
+          className="font-bold font-poppins text-7xl max-md:text-5xl lg:my-2 max-lg:mb-2 mix-blend-difference"
           ref={headingRef}
         >
           About Me
         </h2>
         <p
-          className="font-montserrat text-pretty md:text-4xl text-lg leading-normal text-primary-dark mix-blend-difference"
+          className="font-montserrat text-pretty md:text-4xl text-lg leading-normal mix-blend-difference"
           ref={textRef}
         >
           An independent and self-motivated Front-End Developer looking to apply
@@ -122,7 +122,7 @@ const About = () => {
         <div ref={ctaRef}>
           <LinkScroll
             to="Contact"
-            className="cta-button flex gap-2 hover:cursor-pointer items-center max-lg:justify-self-center max-lg:mt-2 text-nowrap w-fit bg-black text-primary-dark mix-blend-normal! md:mt-4 p-2 px-4 font-poppins font-bold text-3xl max-md:rounded max-md:text-xl! max-sm:text-sm transition-all duration-500"
+            className="cta-button flex gap-2 hover:cursor-pointer items-center max-lg:justify-self-center max-lg:mt-2 text-nowrap w-fit bg-black text-primary-dark dark:bg-light dark:text-primary-light mix-blend-normal! md:mt-4 p-2 px-4 font-poppins font-bold text-3xl max-md:rounded max-md:text-xl! max-sm:text-sm transition-all duration-500"
             smooth
           >
             Let's get in touch
@@ -136,7 +136,7 @@ const About = () => {
           ref={pictureRef}
           src="./images/about.png"
           alt="myself-about"
-          className="w-full h-full object-contain saturate-0"
+          className="w-full h-full object-contain saturate-100"
           loading="lazy"
         />
       </div>

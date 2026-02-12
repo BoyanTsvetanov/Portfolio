@@ -75,10 +75,10 @@ const SkillsItem = ({ category, description, skills, video }) => {
         loop
         muted
         playsInline
-        className="absolute inset-0 w-full h-full object-cover saturate-0 contrast-150 -z-10 pointer-events-none hidden xl:block"
+        className="absolute inset-0 w-full h-full object-cover saturate-0 contrast-150 -z-20 pointer-events-none hidden xl:block"
       />
 
-      <h4 className="text-8xl max-lg:text-5xl max-lg:self-center max-lg:justify-self-center mix-blend-difference text-primary-dark font-sofiasans sm:tracking-tighter! sm:italic font-semibold transition-all duration-300">
+      <h4 className="text-8xl max-lg:text-5xl max-lg:text-center mix-blend-difference text-primary-dark font-montserrat sm:tracking-tighter! sm:italic font-semibold transition-all duration-300">
         {category}
       </h4>
 
@@ -96,6 +96,7 @@ const SkillsItem = ({ category, description, skills, video }) => {
                 src={skill.img}
                 alt={skill.name}
                 className="h-full object-contain invert"
+                loading="lazy"
               />
 
               <p className="text-white leading-none!">{skill.name}</p>

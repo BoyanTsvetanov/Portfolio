@@ -56,19 +56,19 @@ const Hero = () => {
 
       const ctx = gsap.context(() => {
         const text = SplitText.create(headerRef.current, {
-          type: "chars",
+          type: "chars, words, lines",
         });
 
         gsap
           .timeline()
           .fromTo(
-            text.chars,
+            text.words,
             { opacity: 0, y: -20 },
             {
               opacity: 1,
-              delay: 0.6,
+              delay: 3.6,
               y: 0,
-              stagger: 0.5,
+              stagger: 0.3,
               ease: "power2.out",
             },
           )
@@ -77,6 +77,7 @@ const Hero = () => {
             { autoAlpha: 0, y: -10 },
             {
               autoAlpha: 1,
+              delay: 0.5,
               y: 0,
               duration: 0.5,
               ease: "power2.out",
@@ -96,10 +97,17 @@ const Hero = () => {
   return (
     <section
       ref={ref}
-      className="w-full h-dvh max-sm:h-dvh pt-16 max-sm:pt-0 relative flex"
+      className="w-full h-dvh pt-16 max-sm:pt-0 relative flex"
       name="Hero"
     >
-      {!loadSpline && isTabletOrLaptop() && (
+      <video
+        src="./videos/slidebar1.mp4"
+        autoPlay
+        muted
+        loop
+        className="w-full h-full object-cover absolute top-0 left-0 saturate-0 -z-20"
+      ></video>
+      {/* {!loadSpline && isTabletOrLaptop() && (
         <div className="absolute inset-0 flex items-center justify-center z-10">
           <div className="w-2/3 h-2/3 bg-gray-300 animate-pulse rounded-lg" />
         </div>
@@ -111,28 +119,34 @@ const Hero = () => {
           url="https://prod.spline.design/pxy8IAoIBJ7oMhfj/scene.splinecode"
           className=""
         />
-      )}
+      )} */}
 
-      {!isTabletOrLaptop() && (
-        <div className="flex flex-col relative h-fit w-full my-auto justify-center items-center">
-          <h1
-            className="text-8xl font-bold font-bebas mx-auto uppercase tracking-tighter!"
-            style={{
-              writingMode: "vertical-rl", // vertical text
-              textOrientation: "upright", // letters remain upright
-            }}
-            ref={headerRef}
-          >
+      {/* {!isTabletOrLaptop() && ( */}
+      <div className="flex flex-col relative h-fit w-full my-auto justify-center items-center">
+        {/* <img src="" alt="hero-background" /> */}
+        <h1
+          className="text-[120px] max-md:text-6xl font-cursive font-semibold mx-auto uppercase md:text-nowrap mix-blend-difference text-primary-dark"
+          // style={{
+          //   writingMode: "vertical-rl",
+          //   textOrientation: "upright",
+          // }}
+          ref={headerRef}
+        >
+          {/* Boyan */}
+          Hi! I'm <br />
+          <span className="font-bebas font-bold text-[240px] max-md:text-8xl">
             Boyan
-          </h1>
-          <MoveDown
-            size={40}
-            strokeWidth={1}
-            ref={arrowRef}
-            className="max-sm:invisible absolute -bottom-16"
-          />
-        </div>
-      )}
+          </span>
+          <br /> A Front-End Developer
+        </h1>
+        <MoveDown
+          size={40}
+          strokeWidth={1}
+          ref={arrowRef}
+          className="max-sm:hidden absolute -bottom-16 mix-blend-difference text-primary-dark"
+        />
+      </div>
+      {/* )} */}
     </section>
   );
 };
