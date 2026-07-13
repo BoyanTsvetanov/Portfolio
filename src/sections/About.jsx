@@ -13,6 +13,7 @@ const About = () => {
   const textRef = useRef(null);
   const ctaRef = useRef(null);
   const pictureRef = useRef(null);
+  const barsRef = useRef(null);
 
   useEffect(() => {
     let ctx = gsap.context(() => {
@@ -84,6 +85,24 @@ const About = () => {
           },
         },
       );
+
+      const bars = barsRef.current.children;
+      gsap.fromTo(
+        bars,
+        { rotateX: 90, transformOrigin: "top" },
+        {
+          rotateX: 0,
+          stagger: 0.2,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 90%", // when top of bars hits bottom of viewport
+            end: "+=100%", // when top of bars hits top of viewport
+            scrub: true,
+            markers: false,
+          },
+        },
+      );
     }, sectionRef);
 
     return () => ctx.revert();
@@ -92,7 +111,7 @@ const About = () => {
   return (
     <section
       name="About"
-      className="flex max-lg:flex-col items-center justify-center w-full h-dvh relative mb-6 mask-fade"
+      className="flex max-lg:flex-col items-center justify-center w-full h-dvh relative mb-6 max-sm:mix-blend-difference"
       ref={sectionRef}
     >
       {/* <video
@@ -103,7 +122,15 @@ const About = () => {
         className="object-cover not-dark:invert touch-none transition-all duration-300 pointer-events-none -z-20"
       ></video> */}
 
-      <div className="absolute max-lg:relative left-0 flex flex-col w-full sm:w-3/5 sm:h-2/5 h-fit min-h-[25%] px-16 sm:py-3 justify-center max-lg:text-center text-pretty max-md:text-sm pointer-events-auto z-20">
+      <div className="about-background sm:hidden!" ref={barsRef}>
+        <div className="bar"></div>
+        <div className="bar"></div>
+        <div className="bar"></div>
+        <div className="bar"></div>
+        <div className="bar"></div>
+      </div>
+
+      <div className="absolute max-lg:relative left-0 flex flex-col w-full sm:w-3/5 sm:h-2/5 max-sm:h-svh h-fit min-h-[25%] px-16 sm:py-3 justify-center max-lg:text-center text-pretty max-md:text-sm pointer-events-auto z-20">
         <h2
           className="font-bold font-poppins text-7xl max-md:text-5xl lg:my-2 max-lg:mb-2 mix-blend-difference"
           ref={headingRef}
@@ -122,7 +149,7 @@ const About = () => {
         <div ref={ctaRef}>
           <LinkScroll
             to="Contact"
-            className="cta-button flex gap-2 hover:cursor-pointer items-center max-lg:justify-self-center max-lg:mt-2 text-nowrap w-fit bg-black text-primary-dark dark:bg-light dark:text-primary-light mix-blend-normal! md:mt-4 p-2 px-4 font-poppins font-bold text-3xl max-md:rounded max-md:text-xl! max-sm:text-sm transition-all duration-500"
+            className="cta-button flex gap-2 hover:cursor-pointer items-center max-lg:justify-self-center max-lg:mt-2 text-nowrap w-fit bg-black text-primary-dark dark:bg-light dark:text-primary-light md:mt-4 p-2 px-4 font-poppins font-bold text-3xl max-md:rounded max-md:text-xl! max-sm:text-sm transition-all duration-500"
             smooth
           >
             Let's get in touch

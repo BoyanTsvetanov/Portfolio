@@ -15,7 +15,7 @@ export const projectsData = [
     title: "Mavi 15",
     date: "04/2025",
     description:
-      "Designed and developed the official website for Mavi 15, a travel and tour company. Built with React.js, Vite, Tailwind CSS, and Node.js, the site delivers a fast, scalable, and modern user experience. Currently live and maintained.",
+      "Designed and developed the official website for Mavi 15, a travel and tour company. Built with React.js, Vite, Tailwind CSS, and Node.js, the site delivers a fast, scalable, and modern user experience. Currently NOT live.",
     images: ["/projects/mavi-lg.png", "/projects/mavi-sm.png"],
     type: "images",
     link: "https://mavi-15.com/",

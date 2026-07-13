@@ -166,6 +166,20 @@ p {
     border: 1px solid white;
   }
 
+  .about-background {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    z-index: -1;
+  }
+
+  .about-background .bar {
+    flex: 1;
+    background: var(--color-light);
+  }
+
   .project-card {
     position: relative;
     clip-path: polygon(3% 0, 100% 0, 100% 95%, 97% 100%, 0 100%, 0 5%);
@@ -179,6 +193,10 @@ p {
     clip-path: polygon(3% 0, 99% 1%, 100% 95%, 97% 100%, 1% 99%, 0 5%);
     backdrop-filter: brightness(2);
     z-index: -1;
+  }
+
+  .skills-bg {
+    clip-path: polygon(100% 0, 100% 90%, 0 100%, 0 10%);
   }
 
   .scroll-hide::-webkit-scrollbar {

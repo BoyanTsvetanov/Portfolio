@@ -64,21 +64,21 @@ const SkillsItem = ({ category, description, skills, video }) => {
   return (
     <div
       ref={containerRef}
-      className="text-pretty w-full flex-2/4 hover:flex-3/4 max-sm:min-h-60 gap-2 border-b-2 first:border-t-2 flex flex-col max-xl:py-4 transition-all duration-200 group"
+      className="text-pretty w-full flex-2/4 max-sm:min-h-60 gap-2 max-sm:gap-4 border-b-2 first:border-t-2 flex flex-col max-xl:py-4 transition-all duration-200 group"
       onMouseEnter={handleEnter}
       onMouseLeave={handleLeave}
     >
-      <video
+      {/* <video
         ref={videoRef}
         src={video}
         autoPlay
         loop
         muted
         playsInline
-        className="absolute inset-0 w-full h-full object-cover saturate-0 contrast-150 -z-20 pointer-events-none hidden xl:block"
-      />
+        className="absolute inset-0 w-full h-full object-cover saturate-0 contrast-100 -z-20 pointer-events-none hidden xl:block blur-xs"
+      /> */}
 
-      <h4 className="text-8xl max-lg:text-5xl max-lg:text-center mix-blend-difference text-primary-dark font-montserrat sm:tracking-tighter! sm:italic font-semibold transition-all duration-300">
+      <h4 className="text-8xl max-lg:text-5xl max-sm:text-4xl max-lg:text-center mix-blend-difference text-primary-dark font-montserrat max-lg:font-biorhyme sm:tracking-tighter! tracking-normal! sm:italic font-semibold max-sm:font-medium transition-all duration-300">
         {category}
       </h4>
 

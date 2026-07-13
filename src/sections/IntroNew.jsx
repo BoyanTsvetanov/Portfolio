@@ -23,7 +23,7 @@ const IntroNew = () => {
       {
         opacity: 1,
         duration: 1,
-        delay: 0.7,
+        delay: 0.3,
         stagger: 0.05,
         ease: "power2.out",
       },
@@ -32,7 +32,7 @@ const IntroNew = () => {
     tl.to(introRef.current, {
       yPercent: 100,
       ease: "power2.out",
-      delay: 1,
+      delay: 0.5,
       onComplete: () => {
         introRef.current.style.display = "none";
       },
@@ -47,7 +47,9 @@ const IntroNew = () => {
         ref={textRef}
         className="text-2xl max-sm:text-4xl text-primary-light dark:text-primary-dark font-semibold"
       >
-        Welcome
+        Welcome <span>.</span>
+        <span>.</span>
+        <span>.</span>
       </p>
     </div>
   );

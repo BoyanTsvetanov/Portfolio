@@ -83,7 +83,7 @@ const ProjectItem = ({
           <img
             src={`./${type}${images[1]}`}
             alt="project"
-            className="h-full object-cover group-hover:brightness-50 md:saturate-75 transition-all duration-300 project-card"
+            className="h-full object-cover group-hover:brightness-50 md:saturate-75 saturate-90 transition-all duration-300 project-card"
           />
           <img
             src={`./${type}${images[0]}`}
