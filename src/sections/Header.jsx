@@ -1,15 +1,6 @@
-import React, {
-  useState,
-  useEffect,
-  useRef,
-  use,
-  useLayoutEffect,
-} from "react";
+import React, { useState, useEffect, useRef, useLayoutEffect } from "react";
 import { navLinks } from "../constants";
 import clsx from "clsx";
-import { Link as LinkScroll } from "react-scroll";
-import { Sun, Moon } from "lucide-react";
-import { getTheme, setTheme } from "../constants/theme.js";
 import { gsap } from "gsap";
 
 const Header = ({ isOpen, setIsOpen }) => {
@@ -20,55 +11,76 @@ const Header = ({ isOpen, setIsOpen }) => {
   const menuRef = useRef(null);
   const [blendEnabled, setBlendEnabled] = useState(true);
 
+  // Auto-hide header refs
+  const lastScrollY = useRef(0);
+  const isHiddenRef = useRef(false);
+
+  // Track scrolled state
   useEffect(() => {
     const handleScroll = () => {
       setHasScrolled(window.scrollY > 32);
     };
 
     window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const NavLink = ({ title }) => (
-    <LinkScroll
+  // Auto-hide header on scroll down / reveal on scroll up
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      // Keep visible near top of page or when mobile menu is open
+      if (isOpen || currentScrollY < 50) {
+        if (isHiddenRef.current) {
+          gsap.to(headerRef.current, {
+            yPercent: 0,
+            duration: 0.35,
+            ease: "power2.out",
+          });
+          isHiddenRef.current = false;
+        }
+        lastScrollY.current = currentScrollY;
+        return;
+      }
+
+      // Hide when scrolling down
+      if (currentScrollY > lastScrollY.current && !isHiddenRef.current) {
+        gsap.to(headerRef.current, {
+          yPercent: -100,
+          duration: 0.35,
+          ease: "power2.out",
+        });
+        isHiddenRef.current = true;
+      }
+      // Show when scrolling up
+      else if (currentScrollY < lastScrollY.current && isHiddenRef.current) {
+        gsap.to(headerRef.current, {
+          yPercent: 0,
+          duration: 0.35,
+          ease: "power2.out",
+        });
+        isHiddenRef.current = false;
+      }
+
+      lastScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [isOpen]);
+
+  // Standard anchor NavLink
+  const NavLink = ({ title, href }) => (
+    <a
       onClick={() => setIsOpen(false)}
-      to={title}
-      offset={-80}
-      spy
-      smooth
-      activeClass="nav-active"
-      className="font-bebas leading-none uppercase z-10 cursor-pointer group text-primary-dark  transition-colors duration-200"
+      href={href || `#${title}`}
+      className="font-bebas leading-none uppercase z-10 cursor-pointer group text-primary-dark transition-colors duration-200"
     >
       {title}
       <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-2 bg-white"></span>
-    </LinkScroll>
+    </a>
   );
-
-  const [darkMode, setDarkMode] = useState(false);
-
-  // Load theme from localStorage on mount
-  // useEffect(() => {
-  //   const mediaQuery = window.matchMedia("(prefers-color-scheme: light)");
-
-  //   const applySystemTheme = () => {
-  //     const isDark = mediaQuery.matches;
-  //     setDarkMode(isDark);
-  //     document.documentElement.classList.toggle("dark", isDark);
-  //   };
-
-  //   // Apply on mount
-  //   applySystemTheme();
-
-  //   // React to system changes
-  //   mediaQuery.addEventListener("change", applySystemTheme);
-
-  //   return () => {
-  //     mediaQuery.removeEventListener("change", applySystemTheme);
-  //   };
-  // }, []);
 
   const menuTl = useRef(null);
   const hasMounted = useRef(false);
@@ -76,7 +88,6 @@ const Header = ({ isOpen, setIsOpen }) => {
   useLayoutEffect(() => {
     if (!navRef.current) return;
 
-    // Set initial CLOSED position (no animation)
     gsap.set(navRef.current, {
       xPercent: 100,
       y: window.innerHeight,
@@ -98,10 +109,7 @@ const Header = ({ isOpen, setIsOpen }) => {
     const ctx = gsap.context(() => {
       gsap.fromTo(
         [logoRef.current, menuRef.current],
-        {
-          y: -20,
-          opacity: 0,
-        },
+        { y: -20, opacity: 0 },
         {
           y: 0,
           opacity: 1,
@@ -116,28 +124,29 @@ const Header = ({ isOpen, setIsOpen }) => {
     return () => ctx.revert();
   }, []);
 
+  // Handle Mobile Menu toggle + Scrollbar Shift Compensation
   useEffect(() => {
     if (!menuTl.current || !hasMounted.current) return;
 
+    const scrollbarWidth =
+      window.innerWidth - document.documentElement.clientWidth;
+
     if (isOpen) {
       setBlendEnabled(false);
+
+      // Lock scroll and offset padding to prevent layout shift
       document.body.style.overflow = "hidden";
+
       menuTl.current.play();
     } else {
       menuTl.current.reverse();
       menuTl.current.eventCallback("onReverseComplete", () => {
         setBlendEnabled(true);
+
         document.body.style.overflow = "";
       });
     }
   }, [isOpen]);
-
-  // Toggle theme and save to localStorage
-  //   const toggleTheme = () => {
-  //     const next = darkMode ? "light" : "dark";
-  //     setDarkMode(next === "dark");
-  //     setTheme(next);
-  //   };
 
   return (
     <header
@@ -148,36 +157,25 @@ const Header = ({ isOpen, setIsOpen }) => {
           ? "lg:py-6 md:py-4 max-md:py-2"
           : "lg:py-6 md:py-4 max-md:py-2",
         blendEnabled ? "mix-blend-difference text-white" : "text-transparent",
-        // isOpen
-        //   ? "lg:mix-blend-difference text-white"
-        //   : "mix-blend-difference text-white",
       )}
     >
       <nav className="flex justify-between items-center max-md:justify-between">
-        <div ref={logoRef}>
-          <LinkScroll to="Hero" className="mix-blend-difference" smooth>
-            {/* <img src="./icons/logo-light.png" alt="logo" width={130}/> */}
-
+        <div
+          ref={logoRef}
+          className={clsx("z-50 block", isOpen && "text-primary-dark")}
+        >
+          {/* Logo direct <a> link */}
+          <a href="#Hero" className="mix-blend-difference">
             <h2 className="font-bebas lg:text-4xl sm:text-2xl max-sm:text-lg">
               Boyan Tsvetanov
             </h2>
             <p className="font-poppins max-md:text-sm leading-none!">
-              Front-End Developer
+              Software Engineer - Web
             </p>
-          </LinkScroll>
+          </a>
         </div>
 
-        <div className="lg:relative w-fit flex flex-row items-center gap-10">
-          {/* <button
-            onClick={toggleTheme}
-            className={clsx(
-              "p-2 rounded-lg  text-primary-light dark:text-primary-dark cursor-pointer transition-colors",
-              hasScrolled ? "bg-light dark:bg-dark" : "bg-transparent"
-            )}
-          >
-            {darkMode ? <Sun size={20} /> : <Moon size={20} />}
-          </button> */}
-
+        <div className="relative w-fit flex flex-row items-center gap-10">
           <button
             ref={menuRef}
             className="block z-50"
@@ -190,29 +188,27 @@ const Header = ({ isOpen, setIsOpen }) => {
             />
           </button>
         </div>
+
         <ul
           ref={navRef}
           className="fixed inset-0 w-full h-dvh bg-dark flex flex-col justify-center items-start px-16 max-md:px-8 text-8xl z-40"
-          // isOpen
-          //   ? "opacity-100 translate-y-0"
-          //   : "pointer-events-none opacity-0 -translate-y-1/4",
-          // )}
         >
+          <video
+            src="./videos/slidebar1.mp4"
+            autoPlay
+            muted
+            loop
+            className="absolute top-0 right-0 h-full object-cover -z-10 hidden sm:block"
+          ></video>
+          <div className="absolute top-0 left-0 h-full w-2/5 bg-dark -z-5 hidden sm:block"></div>
           {navLinks.map((item) => (
             <li key={item.label}>
-              <NavLink title={item.label}></NavLink>
+              <NavLink
+                title={item.label}
+                href={item.path || `#${item.label}`}
+              />
             </li>
           ))}
-
-          {/* <div className="hidden max-lg:block w-full h-full inset-0 absolute mix-blend-normal!">
-              <video
-                src="./videos/slidebar1.mp4"
-                muted
-                autoPlay
-                loop
-                className="absolute w-full object-cover h-full"
-              ></video>
-            </div> */}
         </ul>
       </nav>
     </header>

@@ -12,10 +12,42 @@ export const navLinks = [
 
 export const projectsData = [
   {
+    title: "StreamApp",
+    date: "08/2026",
+    description:
+      "A feature-rich streaming platform for discovering media, managing personal watchlists, and tracking viewing history. Engineered with a server-first architecture using Next.js Server Actions for low-latency database queries and optimistic UI updates for instant interaction. Features secure multi-provider authentication (OAuth & Credentials), dynamic external API fetching, and optimized database cascading for seamless cross-device performance.",
+    tags: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Prisma",
+      "PostgreSQL",
+      "NextAuth.js",
+    ],
+    images: ["/projects/streamapp.png", "/projects/streamapp.png"],
+    type: "images",
+    link: "https://streaming-app-lyart.vercel.app/",
+  },
+  {
+    title: "Virtual-Roulette",
+    subtitle: "Modular application",
+    date: "04/2026",
+    description:
+      "Delivered the front-end architecture and gameplay engine for a commercial virtual roulette title across multiple game variants (x72, x120, x500). Engineered high-performance 60fps animations, complex betting state logic, and reusable modular components tailored for high-frequency interactions across both virtual and live-stream environments.",
+    tags: ["React", "PixiJS", "GSAP", "TypeScript", "Tailwind CSS"],
+    images: [
+      "/projects/virtual-roulette1.png",
+      "/projects/virtual-roulette1.png",
+    ],
+    type: "images",
+    link: "https://pateplay.com/live-casino/virtual-roulette",
+  },
+  {
     title: "Mavi 15",
     date: "04/2025",
     description:
-      "Designed and developed the official website for Mavi 15, a travel and tour company. Built with React.js, Vite, Tailwind CSS, and Node.js, the site delivers a fast, scalable, and modern user experience. Currently NOT live.",
+      "Designed and developed the official web presence for a travel and tour agency. Focused on building a fast, scalable content architecture with responsive layout design, clean visual hierarchy, and optimized client-side performance for mobile users.",
+    tags: ["React", "Vite", "Tailwind CSS", "Node.js"],
     images: ["/projects/mavi-lg.png", "/projects/mavi-sm.png"],
     type: "images",
     link: "https://mavi-15.com/",
@@ -25,7 +57,8 @@ export const projectsData = [
     subtitle: "Sneakers Website",
     date: "02/2025 – 03/2025",
     description:
-      "Built a responsive demo e-commerce site for sneakers with React, Vite, and Tailwind CSS. Focused on clean UI design and shopping experience simulation.",
+      "An interactive e-commerce showcase application simulating an end-to-end footwear shopping experience. Features dynamic product filtering, cart management workflows, and a fully responsive interface tailored for modern mobile browsers.",
+    tags: ["React", "Vite", "Tailwind CSS", "JavaScript"],
     images: ["/projects/sneakers-lg.png", "/projects/sneakers-sm.png"],
     type: "images",
     link: "https://boyantsvetanov.github.io/Sneakers-Demo-App/",
@@ -35,7 +68,8 @@ export const projectsData = [
     subtitle: null,
     date: "01/2025",
     description:
-      "My first React project, exploring component-based design with Tailwind CSS, Vite, and Node.js. Served as a foundational experience in building modern single-page applications.",
+      "A modern single-page application built to explore component-driven architecture, advanced Tailwind layouts, and responsive design patterns. Serves as a foundational showcase in modern React interface development.",
+    tags: ["React", "Vite", "Tailwind CSS", "JavaScript"],
     images: ["/projects/xora-lg.png", "/projects/xora-sm.png"],
     type: "images",
     link: "https://boyantsvetanov.github.io/React-First-App-Xora-Demo/",
@@ -45,17 +79,19 @@ export const projectsData = [
     subtitle: "Fitness Website",
     date: "06/2024 – 09/2024",
     description:
-      "Developed a fitness-themed demo site with a focus on engaging UI and modern aesthetics. Leveraged AI-generated imagery and integrated both familiar and new technologies.",
+      "A web application featuring custom layout structuring, interactive elements, and AI-curated visual media designed to build engaging visual landing pages.",
+    tags: ["HTML5", "CSS3", "JavaScript"],
     images: ["/projects/fitness-lg.png", "/projects/fitness.png"],
     type: "images",
     link: "https://boyantsvetanov.github.io/MyGym/index.html",
   },
   {
     title: "Flix",
-    subtitle: "Movie Website",
+    subtitle: "Movie Website (V1 Foundation)",
     date: "10/2023 – 05/2024",
     description:
-      "Created a dynamic movie web application using Java, Spring Framework, MySQL, HTML, CSS, and JavaScript. Initially built as a capstone project, then iteratively improved with new features and UI enhancements over several months (Currently not deployed online).",
+      "A full-stack movie catalog capstone project that served as my initial foundation in relational database design, user authorization, and CRUD architecture. Rebuilding this core concept years later inspired StreamApp, reflecting my evolution toward modern Server Actions, Next.js, and edge deployment.",
+    tags: ["Java", "Spring Boot", "MySQL", "JavaScript", "HTML/CSS"],
     images: ["/projects/Screenshot_13.png", "/projects/Screenshot_9.png"],
     type: "images",
     link: "https://github.com/BoyanTsvetanov/The-Graduation-Project",
@@ -72,6 +108,7 @@ export const skillsData = [
       { name: "Tailwind CSS", img: "./icons/skills/tailwind.svg" },
       { name: "NextJS", img: "./icons/skills/nextjs.svg" },
       { name: "TypeScript", img: "./icons/skills/typescript.png" },
+      { name: "PixiJS", img: "./icons/skills/pixijs.png" },
       { name: "HTML", img: "./icons/skills/html.png" },
       { name: "CSS", img: "./icons/skills/css-3.png" },
       { name: "JavaScript", img: "./icons/skills/java-script.png" },
@@ -80,6 +117,8 @@ export const skillsData = [
       { name: "Neon", img: "./icons/skills/neon.png" },
       { name: "MySQL", img: "./icons/skills/mysql.png" },
       { name: "Git", img: "./icons/skills/github.png" },
+      { name: "Figma", img: "./icons/skills/figma.svg" },
+      { name: "Jira", img: "./icons/skills/jira.svg" },
     ],
     video: "./videos/tech-skills1.mp4",
   },

@@ -28,7 +28,7 @@ export default function useLenisScroll(isLocked = false) {
     };
   }, []);
 
-  // 🔥 Lock / unlock scrolling
+  // Lock / unlock scrolling
   useEffect(() => {
     if (!lenisRef.current) return;
 

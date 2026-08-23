@@ -8,6 +8,7 @@
 @import "tailwindcss";
 
 @custom-variant dark (&:where(.dark, .dark *));
+@custom-variant about (&:where(.about, .about *));
 
 @theme {
   --font-oswald: "Oswald", sans-serif;
@@ -27,15 +28,28 @@
   --color-secondary: #b0b0b0;
   --color-accent-red: #ff6f61;
   --color-accent-dark-red: #b22222;
+  --color-accent-blue: rgb(110, 168, 255);
+  --color-accent-dark-blue: #29374d;
+  --color-biege: #c1b39d;
+  --color-status: #00ff00;
+}
+
+html {
+  scrollbar-gutter: stable;
 }
 
 body {
-  @apply bg-light text-primary-light transition-colors duration-300 overflow-x-hidden w-full;
+  @apply bg-light text-primary-light transition-colors duration-500 overflow-x-hidden w-full;
 }
 
 /* Dark Mode */
 .dark body {
   @apply bg-dark text-primary-dark;
+}
+
+/* 3. Green Mode */
+.about body {
+  @apply bg-red-900 text-primary-dark;
 }
 
 /* .nav-active {
@@ -56,6 +70,9 @@ h6 {
 }
 p {
   @apply leading-normal tracking-normal font-sofiasans;
+}
+h3 {
+  @apply uppercase;
 }
 
 @layer utilities {
@@ -100,8 +117,73 @@ p {
     mix-blend-mode: difference;
   }
 
+  .textScroll {
+    gap: 64px;
+    animation: text-scroll 10s linear infinite;
+  }
+
+  .status {
+    width: 18px;
+    height: 18px;
+    position: relative;
+    border-radius: 50%;
+    background-color: var(--color-status);
+  }
+
+  .status::before {
+    content: "";
+    position: absolute;
+    inset: -4.5px;
+    width: 27px;
+    height: 27px;
+    border-radius: 50%;
+    /* background-color: rgba(0, 255, 0, 0.4); */
+    background-color: var(--color-status);
+    transform-origin: center center;
+    /* transform: translate(-18px, 18px); */
+    animation: status 2s infinite;
+  }
+
   .clip-path {
     clip-path: polygon(0 0, 75% 0, 100% 100%, 25% 100%);
+  }
+
+  .cta-animated-border {
+    position: relative;
+    overflow: hidden;
+    border-radius: 6px;
+    background-clip: text;
+    z-index: 1;
+  }
+
+  /* 1. Rotating Gradient (Sized as a large perfect square) */
+  .cta-animated-border::before {
+    content: "";
+    position: absolute;
+    top: -100%;
+    left: -100%;
+    width: 300%; /* Sized large enough to cover wide button diagonals */
+    aspect-ratio: 1 / 1; /* Forces a square so rotation never exposes gaps */
+    background: conic-gradient(
+      from 0deg,
+      #ff6f61,
+      #ffeb3b,
+      #00ff00,
+      #00ffff,
+      #ff6f61
+    );
+    animation: rotateBorder 4s linear infinite;
+    z-index: -2;
+  }
+
+  /* 2. Inner Mask */
+  .cta-animated-border::after {
+    content: "";
+    position: absolute;
+    inset: 2px;
+    background: var(--color-dark, #121212);
+    border-radius: 4px;
+    z-index: -1;
   }
 
   .cta-button {
@@ -193,11 +275,13 @@ p {
     clip-path: polygon(3% 0, 99% 1%, 100% 95%, 97% 100%, 1% 99%, 0 5%);
     backdrop-filter: brightness(2);
     z-index: -1;
+    pointer-events: none;
+    opacity: var(--after-opacity, 0);
   }
 
-  .skills-bg {
+  /* .skills-bg {
     clip-path: polygon(100% 0, 100% 90%, 0 100%, 0 10%);
-  }
+  } */
 
   .scroll-hide::-webkit-scrollbar {
     display: none;
@@ -220,6 +304,10 @@ p {
     width: fit-content;
     gap: 12px;
     align-items: center;
+  }
+
+  .exit-arrow-contact:hover {
+    animation: exit-arrow-contact 0.5s ease-in-out forwards;
   }
 
   @media screen and (width <= 678px) {
@@ -290,6 +378,46 @@ p {
     }
     50% {
       transform: translateY(-10px);
+    }
+  }
+  @keyframes status {
+    0% {
+      transform: scale(0.5);
+      opacity: 1;
+    }
+    /* 50% {
+      transform: scale(1);
+      opacity: 0.5;
+    } */
+    100% {
+      transform: scale(1.25);
+      opacity: 0;
+    }
+  }
+  @keyframes text-scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes exit-arrow-contact {
+    0% {
+      transform: translateY(100%);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes rotateBorder {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
     }
   }
 }

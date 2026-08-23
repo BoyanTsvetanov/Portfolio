@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 
-const SkillsItem = ({ category, description, skills, video }) => {
+const SkillsItemOld = ({ category, description, skills, video }) => {
   const containerRef = useRef(null);
   const videoRef = useRef(null);
   const skillsRef = useRef([]);
@@ -73,7 +73,7 @@ const SkillsItem = ({ category, description, skills, video }) => {
   return (
     <div
       ref={containerRef}
-      className="text-pretty w-full flex-2/4 max-sm:min-h-60 gap-2 sm:gap-4 max-sm:gap-4 first:border-b-2 flex flex-col max-xl:py-4 transition-all duration-200 group"
+      className="text-pretty w-full flex-2/4 max-sm:min-h-60 gap-2 max-sm:gap-4 border-b-2 first:border-t-2 flex flex-col max-xl:py-4 transition-all duration-200 group"
       onMouseEnter={handleEnter}
       onMouseLeave={handleLeave}
     >
@@ -87,13 +87,13 @@ const SkillsItem = ({ category, description, skills, video }) => {
         className="absolute inset-0 w-full h-full object-cover saturate-0 contrast-100 -z-20 pointer-events-none hidden xl:block blur-xs"
       /> */}
 
-      <div className="relative flex items-baseline gap-4 sm:pt-2">
-        <h4 className="w-full text-7xl max-lg:text-5xl max-sm:text-4xl max-lg:text-center mix-blend-difference text-primary-dark font-montserrat sm:tracking-tighter! tracking-normal! sm:italic font-semibold max-sm:font-medium transition-all duration-300">
+      <div className="relative flex items-baseline gap-4">
+        <h4 className="text-8xl max-lg:text-5xl max-sm:text-4xl max-lg:text-center mix-blend-difference text-primary-dark font-montserrat max-lg:font-biorhyme sm:tracking-tighter! tracking-normal! sm:italic font-semibold max-sm:font-medium transition-all duration-300">
           {category}
         </h4>
-        {/* <p ref={descriptionRef} className="text-sm uppercase brightness-150">
+        <p ref={descriptionRef} className="text-sm uppercase brightness-150">
           [hover me]
-        </p> */}
+        </p>
       </div>
       {/* <div
             ref={backgroundRef}
@@ -101,13 +101,13 @@ const SkillsItem = ({ category, description, skills, video }) => {
           ></div> */}
 
       {skills && (
-        <div className="flex flex-row max-sm:grid max-sm:grid-cols-2 w-full gap-2.5 justify-start items-start flex-wrap transition-all duration-500 mix-blend-difference">
-          {/* {(skillsRef.current = [])} */}
+        <div className="flex flex-row max-sm:grid max-sm:grid-cols-2 w-full gap-2.5 justify-start items-start flex-wrap transition-all duration-500">
+          {(skillsRef.current = [])}
 
           {skills.map((skill, index) => (
             <div
               key={index}
-              // ref={(el) => el && (skillsRef.current[index] = el)}
+              ref={(el) => el && (skillsRef.current[index] = el)}
               className="flex flex-row items-center max-sm:justify-center gap-2 border-2 border-white rounded xl:w-1/6 w-fit max-sm:w-full h-12 relative p-2 mix-blend-difference xl:backdrop-brightness-20"
             >
               <img
@@ -126,4 +126,4 @@ const SkillsItem = ({ category, description, skills, video }) => {
   );
 };
 
-export default SkillsItem;
+export default SkillsItemOld;

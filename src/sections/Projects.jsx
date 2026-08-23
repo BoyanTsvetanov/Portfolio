@@ -10,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 export default function Projects() {
   const sectionRef = useRef(null);
   const horizontalRef = useRef(null);
-
+  const bgRef = useRef(null);
   const previousThemeRef = useRef(null);
 
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
@@ -18,7 +18,6 @@ export default function Projects() {
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
     window.addEventListener("resize", handleResize);
-
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
@@ -27,94 +26,141 @@ export default function Projects() {
 
     let ctx = gsap.context(() => {
       const sections = gsap.utils.toArray(".project");
-
-      // Calculate total width
       const totalWidth = horizontalRef.current.offsetWidth;
-      const scrollEnd = window.innerWidth * (1 + 1 / sections.length);
+      const scrollEnd = window.innerWidth * (1.1 + 1 / sections.length);
 
+      const switchToDarkTheme = () => {
+        const currentTheme = getTheme();
+        previousThemeRef.current = currentTheme;
+        // sectionRef.current.style.opacity = 1;
+        if (currentTheme === "light") setTheme("dark");
+      };
+
+      const revertToPreviousTheme = () => {
+        // sectionRef.current.style.opacity = 0.5;
+        if (previousThemeRef.current === "light") setTheme("light");
+      };
+
+      // 1. Theme & Opacity ScrollTrigger
       ScrollTrigger.create({
         trigger: sectionRef.current,
         start: "top center",
         end: `+=${scrollEnd}`,
-        markers: false,
-        pin: false,
-
-        onEnter: () => {
-          const currentTheme = getTheme();
-          previousThemeRef.current = currentTheme;
-
-          if (currentTheme === "light") {
-            setTheme("dark");
-          }
-        },
-
-        onEnterBack: () => {
-          const currentTheme = getTheme();
-          previousThemeRef.current = currentTheme;
-
-          if (currentTheme === "light") {
-            setTheme("dark");
-          }
-        },
-
-        onLeave: () => {
-          if (previousThemeRef.current === "light") {
-            setTheme("light");
-          }
-        },
-
-        onLeaveBack: () => {
-          if (previousThemeRef.current === "light") {
-            setTheme("light");
-          }
-        },
+        onEnter: switchToDarkTheme,
+        onEnterBack: switchToDarkTheme,
+        onLeave: revertToPreviousTheme,
+        onLeaveBack: revertToPreviousTheme,
       });
 
-      // Set up the ScrollTrigger to pin and scroll horizontally
-      gsap.to(horizontalRef.current, {
+      // 2. Background Fade
+      gsap.fromTo(
+        bgRef.current,
+        { opacity: 0 },
+        {
+          opacity: 1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 60%",
+            end: "top 10%",
+            scrub: true,
+          },
+        },
+      );
+
+      // 3. Horizontal Scroll
+      const horizontalTween = gsap.to(horizontalRef.current, {
         xPercent: -100 * (sections.length - 1),
         ease: "none",
         scrollTrigger: {
           trigger: sectionRef.current,
           pin: true,
-          scrub: 1.2,
+          scrub: 1.1,
+          // snap: 1 / (sections.length - 1),
+          start: "top top",
+          end: `+=${totalWidth}`,
           markers: false,
-          snap: 1 / (sections.length - 1),
-          start: "top-=80 top", // The start point: trigger when the section is at the top of the viewport
-          end: `+=${totalWidth}`, // The end point: when we've scrolled the full width of the section horizontally
         },
+      });
+
+      // 4. Sequenced Reveals with Synchronized Glow & ::after Frame
+      sections.forEach((project) => {
+        const targets = project.querySelectorAll(".project-reveal");
+        const fadeElements = project.querySelectorAll(".project-reveal-fade");
+        const container = project.querySelector(".project-container");
+
+        if (targets.length > 0) {
+          const tl = gsap.timeline({
+            scrollTrigger: {
+              trigger: project,
+              containerAnimation: horizontalTween,
+              start: "left 70%",
+              toggleActions: "play none none reverse",
+            },
+          });
+
+          // Step 1: Text & Main Image Slide Up
+          tl.fromTo(
+            targets,
+            { yPercent: 100, opacity: 0 },
+            {
+              yPercent: 0,
+              opacity: 1,
+              duration: 0.8,
+              ease: "power3.out",
+              stagger: 0.12,
+            },
+          );
+
+          // Step 2: Ambilight Glow
+          if (fadeElements.length > 0) {
+            tl.fromTo(
+              fadeElements,
+              { opacity: 0 },
+              { opacity: 1, duration: 0.6, ease: "power2.out" },
+              ">-0.1",
+            );
+          }
+
+          // Step 3: ::after pseudo-element reveals SIMULTANEOUSLY with glow
+          if (container) {
+            tl.fromTo(
+              container,
+              { "--after-opacity": 0 },
+              { "--after-opacity": 1, duration: 0.6, ease: "power2.out" },
+              "<", // "<" targets the exact start of the previous step
+            );
+          }
+        }
       });
     }, sectionRef);
 
-    return () => ctx.revert(); // Cleanup on unmount
+    return () => ctx.revert();
   }, [isMobile]);
 
   return (
     <section
       name="Projects"
       ref={sectionRef}
-      className="relative w-full mx-auto overflow-x-hidden pb-6"
+      id="Projects"
+      /* Replaced overflow-x-hidden with overflow-x-clip to avoid vertical blur cropping */
+      className="relative flex flex-col w-full lg:h-dvh lg:max-h-dvh mx-auto overflow-x-clip transition-opacity duration-500 max-sm:scroll-m-10"
     >
-      <div className="flex flex-col justify-center items-center max-md:mb-6 z-10 ">
+      <div className="flex flex-col justify-center items-center lg:py-6 max-md:mb-6 z-10">
         <h2 className="font-bold text-center font-poppins">Projects</h2>
         <h3 className="text-7xl max-md:text-5xl max-w-[94%] tracking-tight leading-none! font-bold text-center font-poppins z-10">
           Standout Work
         </h3>
       </div>
 
-      <div className="relative max-md:items-stretch w-full mx-auto scroll-hide transition-colors duration-300">
-        {/* <h1 className="absolute max-lg:hidden top-0 left-1/2 -translate-x-1/2 z-10 text-primary-dark justify-self-center px-2 text-[80px] max-sm:text-[60px] font-bold text-center font-poppins">Projects</h1> */}
-        {/* <video src="./videos/test1.mp4" autoPlay loop muted className="absolute w-full h-full object-cover -z-10 md:hidden not-dark:invert"></video> */}
-        {/* <div className='absolute -z-5 w-full h-full bg-gradient-to-br from-transparent from-40% to-90% to-black max-md:hidden'></div> */}
-        {/* <img src="./images/sticker.png" alt="" className="absolute w-full h-full object-contain -z-10 max-md:hidden" /> */}
-        {/* <div className='absolute -z-5 w-full h-full bg-gradient-to-b from-transparent from-40% to-90% to-black/50 max-md:hidden'></div> */}
+      <div className="relative max-md:items-stretch w-full h-full scroll-hide transition-colors duration-300">
         <div
           ref={horizontalRef}
-          className="flex lg:h-fit md:py-16 w-full items-stretch max-md:grid max-md:gap-8"
+          className="flex lg:h-full w-full items-stretch max-md:grid max-md:gap-8"
         >
-          {projectsData.map((project, index) => (
+          {projectsData.map((project) => (
             <ProjectItem
-              key={index}
+              key={project.title}
               title={project.title}
               subtitle={project.subtitle}
               date={project.date}
@@ -122,7 +168,8 @@ export default function Projects() {
               images={project.images}
               type={project.type}
               link={project.link}
-            ></ProjectItem>
+              tags={project.tags}
+            />
           ))}
         </div>
       </div>
