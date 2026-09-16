@@ -81,7 +81,7 @@ export const projectsData = [
     description:
       "A web application featuring custom layout structuring, interactive elements, and AI-curated visual media designed to build engaging visual landing pages.",
     tags: ["HTML5", "CSS3", "JavaScript"],
-    images: ["/projects/fitness-lg.png", "/projects/fitness.png"],
+    images: ["/projects/fitness-lg.png", "/projects/fitlife.png"],
     type: "images",
     link: "https://my-gym-rho.vercel.app/",
   },
