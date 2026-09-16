@@ -83,7 +83,7 @@ export const projectsData = [
     tags: ["HTML5", "CSS3", "JavaScript"],
     images: ["/projects/fitness-lg.png", "/projects/fitness.png"],
     type: "images",
-    link: "https://boyantsvetanov.github.io/MyGym/index.html",
+    link: "https://my-gym-rho.vercel.app/",
   },
   {
     title: "Flix",
